@@ -1,19 +1,0 @@
-Training on device cuda:0
-seq_dataset 214
-seq_dataset_val 20
-Train epoch 1/200
-  0% 0/1000 [00:00<?, ?it/s]  0% 0/1000 [00:05<?, ?it/s]
-Traceback (most recent call last):
-  File "/home/zuern/SiamRPN-PyTorch/train/train_siamrpn.py", line 291, in <module>
-    main()
-  File "/home/zuern/SiamRPN-PyTorch/train/train_siamrpn.py", line 195, in main
-    loss = model.step(epoch, dataset, anchors, i, train=True)
-  File "/home/zuern/SiamRPN-PyTorch/train/net.py", line 179, in step
-    loss = self.criterion(responses, target)
-  File "/home/zuern/.local/lib/python3.5/site-packages/torch/nn/modules/module.py", line 541, in __call__
-    result = self.forward(*input, **kwargs)
-  File "/home/zuern/SiamRPN-PyTorch/train/network_siamfc.py", line 22, in forward
-    input, target, weight, reduction='sum')
-  File "/home/zuern/.local/lib/python3.5/site-packages/torch/nn/functional.py", line 2112, in binary_cross_entropy_with_logits
-    raise ValueError("Target size ({}) must be the same as input size ({})".format(target.size(), input.size()))
-ValueError: Target size (torch.Size([32, 1805])) must be the same as input size (torch.Size([32, 1, 19, 19]))
