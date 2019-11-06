@@ -1,0 +1,38 @@
+seq_dataset 214
+seq_dataset_val 234
+Train epoch 1/200
+  0% 0/1000 [00:00<?, ?it/s]  0% 0/1000 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/zuern/Pycharm/pycharm-community-2018.3.5/helpers/pydev/pydevd.py", line 1741, in <module>
+    main()
+  File "/home/zuern/Pycharm/pycharm-community-2018.3.5/helpers/pydev/pydevd.py", line 1735, in main
+    globals = debugger.run(setup['file'], None, None, is_module)
+  File "/home/zuern/Pycharm/pycharm-community-2018.3.5/helpers/pydev/pydevd.py", line 1135, in run
+    pydev_imports.execfile(file, globals, locals)  # execute the script
+  File "/home/zuern/Pycharm/pycharm-community-2018.3.5/helpers/pydev/_pydev_imps/_pydev_execfile.py", line 18, in execfile
+    exec(compile(contents+"\n", file, 'exec'), glob, loc)
+  File "/home/zuern/SiamRPN-PyTorch/train/train_siamrpn.py", line 277, in <module>
+    main()
+  File "/home/zuern/SiamRPN-PyTorch/train/train_siamrpn.py", line 191, in main
+    for i, dataset in enumerate(train_loader):
+  File "/home/zuern/.local/lib/python3.5/site-packages/torch/utils/data/dataloader.py", line 819, in __next__
+    return self._process_data(data)
+  File "/home/zuern/.local/lib/python3.5/site-packages/torch/utils/data/dataloader.py", line 846, in _process_data
+    data.reraise()
+  File "/home/zuern/.local/lib/python3.5/site-packages/torch/_utils.py", line 385, in reraise
+    raise self.exc_type(msg)
+TypeError: Caught TypeError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/zuern/.local/lib/python3.5/site-packages/torch/utils/data/_utils/worker.py", line 178, in _worker_loop
+    data = fetcher.fetch(index)
+  File "/home/zuern/.local/lib/python3.5/site-packages/torch/utils/data/_utils/fetch.py", line 44, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/zuern/.local/lib/python3.5/site-packages/torch/utils/data/_utils/fetch.py", line 44, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/zuern/SiamRPN-PyTorch/train/data_rgbt.py", line 503, in __getitem__
+    self.open()
+  File "/home/zuern/SiamRPN-PyTorch/train/data_rgbt.py", line 155, in open
+    img_ir_mean_d = tuple(map(int, detection_img_ir.mean(axis=(0, 1))))
+TypeError: 'numpy.float64' object is not iterable
+
+Backend TkAgg is interactive backend. Turning interactive mode on.

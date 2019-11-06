@@ -1,0 +1,23 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.8.13
+    is_jupyter_run: false
+    python_version: 3.5.2
+checkpoint_path:
+  desc: null
+  value: null
+experiment_name:
+  desc: null
+  value: SiamRPN_RGB
+modality:
+  desc: null
+  value: 1
+model:
+  desc: null
+  value: SiamRPN
+train_path:
+  desc: null
+  value: /home/zuern/datasets/tracking/GOT10k

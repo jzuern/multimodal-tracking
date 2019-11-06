@@ -1,0 +1,9 @@
+Training on device cuda:0
+Traceback (most recent call last):
+  File "/home/zuern/SiamRPN-PyTorch/train/train_siamrpn.py", line 291, in <module>
+    main()
+  File "/home/zuern/SiamRPN-PyTorch/train/train_siamrpn.py", line 55, in main
+    model = TrackerSiamFC(modality=args.modality)
+  File "/home/zuern/SiamRPN-PyTorch/train/net.py", line 125, in __init__
+    if self.modality == 1:
+AttributeError: 'TrackerSiamFC' object has no attribute 'modality'

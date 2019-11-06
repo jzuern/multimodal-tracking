@@ -1,0 +1,26 @@
+{
+    "host": "hpcgpu4",
+    "program": "/home/zuern/SiamRPN-PyTorch/train/train_siamrpn.py",
+    "python": "3.5.2",
+    "executable": "/usr/bin/python3.5",
+    "startedAt": "2019-11-05T15:26:31.644244",
+    "username": "zuern",
+    "mode": "run",
+    "args": [],
+    "cpu_count": 16,
+    "heartbeatAt": "2019-11-05T15:26:43.781109",
+    "git": {
+        "remote": "https://github.com/arbitularov/SiamRPN-PyTorch",
+        "commit": "f7e4c04ac122ded8be9a4537a75443a487876c8d"
+    },
+    "cuda": "10.0.130",
+    "email": "zuern@informatik.uni-freiburg.de",
+    "gpu_count": 4,
+    "os": "Linux-4.4.0-164-generic-x86_64-with-Ubuntu-16.04-xenial",
+    "jobType": null,
+    "state": "failed",
+    "project": "SiameseX",
+    "gpu": "TITAN X (Pascal)",
+    "exitcode": 1,
+    "root": "/home/zuern/SiamRPN-PyTorch"
+}

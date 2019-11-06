@@ -1,0 +1,32 @@
+{
+    "username": "zuern",
+    "jobType": null,
+    "python": "3.5.2",
+    "root": "/home/zuern/SiamRPN-PyTorch",
+    "mode": "run",
+    "email": "zuern@informatik.uni-freiburg.de",
+    "executable": "/usr/bin/python3.5",
+    "startedAt": "2019-11-06T10:05:01.894106",
+    "state": "running",
+    "git": {
+        "commit": "f7e4c04ac122ded8be9a4537a75443a487876c8d",
+        "remote": "https://github.com/arbitularov/SiamRPN-PyTorch"
+    },
+    "os": "Linux-4.4.0-164-generic-x86_64-with-Ubuntu-16.04-xenial",
+    "project": "SiameseX",
+    "cpu_count": 16,
+    "args": [
+        "--modality",
+        "1",
+        "--experiment_name",
+        "SiamFC_RGB",
+        "--model",
+        "SiamFC"
+    ],
+    "program": "/home/zuern/SiamRPN-PyTorch/train/train_siamrpn.py",
+    "heartbeatAt": "2019-11-06T10:13:52.271695",
+    "gpu": "TITAN X (Pascal)",
+    "cuda": "10.0.130",
+    "gpu_count": 4,
+    "host": "hpcgpu4"
+}

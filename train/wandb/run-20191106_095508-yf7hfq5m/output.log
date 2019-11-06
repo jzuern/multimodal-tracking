@@ -1,0 +1,13 @@
+Training on device cuda:0
+seq_dataset 214
+seq_dataset_val 20
+Train epoch 1/200
+  0% 0/1000 [00:00<?, ?it/s]  0% 0/1000 [00:05<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/zuern/SiamRPN-PyTorch/train/train_siamrpn.py", line 291, in <module>
+    main()
+  File "/home/zuern/SiamRPN-PyTorch/train/train_siamrpn.py", line 195, in main
+    loss = model.step(epoch, dataset, anchors, i, train=True)
+  File "/home/zuern/SiamRPN-PyTorch/train/net.py", line 164, in step
+    template, detection, regression_target, conf_target = dataset
+ValueError: too many values to unpack (expected 4)

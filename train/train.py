@@ -1,0 +1,279 @@
+# -*- coding: utf-8 -*-
+import os
+import sys
+import torch
+import argparse
+import numpy as np
+from tqdm import tqdm
+from config import config
+from net import TrackerSiamRPN, TrackerSiamFC
+from data_rgbt import TrainDataLoaderRGBT
+from torch.utils.data import DataLoader
+
+from util import util, AverageMeter, SavePlot
+from got10k.datasets import ImageNetVID, GOT10k
+from torchvision import datasets, transforms, utils
+from ..custom_transforms import Normalize, ToTensor, RandomStretch, \
+    RandomCrop, CenterCrop, RandomBlur, ColorAug
+import wandb
+from experimentrgbt import RGBTSequence
+
+
+torch.manual_seed(1234) # config.seed
+
+
+parser = argparse.ArgumentParser(description='PyTorch SiameseRPN Training')
+
+parser.add_argument('--train_path', default='/home/zuern/datasets/tracking/GOT10k', metavar='DIR',help='path to dataset')
+parser.add_argument('--experiment_name', default='SiamRPN', metavar='DIR',help='path to weight')
+parser.add_argument('--checkpoint_path', default=None, help='resume')
+parser.add_argument('--modality', default=None, type=int, help='how many modalities')
+parser.add_argument('--model', default=None, type=str, help='which model to use', choices=['SiamFC', 'SiamRPN'])
+
+
+def main():
+
+    '''parameter initialization'''
+    args = parser.parse_args()
+    exp_name_dir = util.experiment_name_dir(args.experiment_name)
+
+
+    wandb.init(project="SiameseX", reinit=True)
+    wandb.config.update(args)  # adds all of the arguments as config variables
+
+
+    '''model on gpu'''
+    if args.model == 'SiamRPN':
+        model = TrackerSiamRPN(modality=args.modality)
+    elif args.model == 'SiamFC':
+        model = TrackerSiamFC(modality=args.modality)
+    else:
+        raise ValueError('Unknown model')
+
+    name = 'RGBT-234'
+
+    assert name in ['VID', 'GOT-10k', 'All', 'RGBT-234']
+
+    if name == 'GOT-10k':
+        root_dir = args.train_path
+        seq_dataset = GOT10k(root_dir, subset='train')
+        seq_dataset_val = GOT10k(root_dir, subset='val')
+
+    elif name == 'VID':
+        root_dir = '/home/zuern/datasets/tracking/VID/ILSVRC'
+        seq_dataset = ImageNetVID(root_dir, subset=('train'))
+        seq_dataset_val = ImageNetVID(root_dir, subset=('val'))
+
+    elif name == 'RGBT-234':
+        seq_dataset = RGBTSequence('/home/zuern/datasets/thermal_tracking/RGB-T234/', subset='train')
+        seq_dataset_val = RGBTSequence('/home/zuern/datasets/thermal_tracking/RGB-T234/', subset='val')
+
+
+    elif name == 'All':
+        root_dir_vid = '/home/arbi/desktop/ILSVRC'
+        seq_datasetVID = ImageNetVID(root_dir_vid, subset=('train'))
+        root_dir_got = args.train_path
+        seq_datasetGOT = GOT10k(root_dir_got, subset='train')
+        seq_dataset = util.data_split(seq_datasetVID, seq_datasetGOT)
+
+        seq_datasetVID = ImageNetVID(root_dir_vid, subset=('val'))
+        root_dir_got = args.train_path
+        seq_datasetGOT = GOT10k(root_dir_got, subset='val')
+        seq_dataset_val = util.data_split(seq_datasetVID, seq_datasetGOT)
+
+    print('seq_dataset', len(seq_dataset))
+    print('seq_dataset_val', len(seq_dataset_val))
+
+
+    train_z_transforms = transforms.Compose([
+        ToTensor()
+    ])
+    train_x_transforms = transforms.Compose([
+        ToTensor()
+    ])
+
+    val_z_transforms = transforms.Compose([
+        ToTensor()
+    ])
+    val_x_transforms = transforms.Compose([
+        ToTensor()
+    ])
+
+    train_data  = TrainDataLoaderRGBT(seq_dataset, train_z_transforms, train_x_transforms, name)
+    anchors = train_data.anchors
+    train_loader = DataLoader(  dataset    = train_data,
+                                batch_size = config.train_batch_size,
+                                shuffle    = True,
+                                num_workers= config.train_num_workers,
+                                pin_memory = True)
+
+    val_data  = TrainDataLoaderRGBT(seq_dataset_val, val_z_transforms, val_x_transforms, name)
+    val_loader = DataLoader(    dataset    = val_data,
+                                batch_size = config.valid_batch_size,
+                                shuffle    = False,
+                                num_workers= config.valid_num_workers,
+                                pin_memory = True)
+
+    '''load weights'''
+
+    if args.checkpoint_path:
+        assert os.path.isfile(args.checkpoint_path), '{} is not valid checkpoint_path'.format(args.checkpoint_path)
+        checkpoint = torch.load(args.checkpoint_path, map_location='cpu')
+        if 'model' in checkpoint.keys():
+            model.net.load_state_dict(torch.load(args.checkpoint_path, map_location='cpu')['model'])
+        else:
+            model.net.load_state_dict(torch.load(args.checkpoint_path, map_location='cpu'))
+        torch.cuda.empty_cache()
+        print('You are loading the model.load_state_dict')
+
+
+    elif config.pretrained_model:
+        checkpoint = torch.load(config.pretrained_model)
+        # change name and load parameters
+        checkpoint = {k.replace('features.features', 'featureExtract'): v for k, v in checkpoint.items()}
+        model_dict = model.net.state_dict()
+        model_dict.update(checkpoint)
+        model.net.load_state_dict(model_dict)
+
+
+
+    train_closses, train_rlosses, train_tlosses = AverageMeter(), AverageMeter(), AverageMeter()
+    train_losses = AverageMeter()
+    val_closses, val_rlosses, val_tlosses = AverageMeter(), AverageMeter(), AverageMeter()
+    val_losses = AverageMeter()
+
+    train_val_plot = SavePlot(exp_name_dir, 'train_val_plot')
+
+
+    for epoch in range(config.epoches):
+
+        model.net.train()
+
+        print('Train epoch {}/{}'.format(epoch+1, config.epoches))
+        train_loss = []
+
+        with tqdm(total=config.train_epoch_size) as progbar:
+
+            for i, dataset in enumerate(train_loader):
+
+                if args.model == 'SiamRPN':
+
+                    closs, rloss, loss = model.step(epoch, dataset,anchors, i,  train=True)
+                    closs_ = closs.cpu().item()
+
+                    if np.isnan(closs_):
+                       sys.exit(0)
+
+                    train_closses.update(closs.cpu().item())
+                    train_rlosses.update(rloss.cpu().item())
+                    train_tlosses.update(loss.cpu().item())
+
+                    progbar.set_postfix(closs='{:05.3f}'.format(train_closses.avg),
+                                        rloss='{:05.5f}'.format(train_rlosses.avg),
+                                        tloss='{:05.3f}'.format(train_tlosses.avg))
+
+                    progbar.update()
+                    train_loss.append(train_tlosses.avg)
+
+                else:
+                    loss = model.step(epoch, dataset, anchors, i, train=True)
+
+                    loss = loss.cpu().item()
+
+                    if np.isnan(loss):
+                        sys.exit(0)
+
+                    train_losses.update(loss.cpu().item())
+
+                    progbar.set_postfix(closs='{:05.3f}'.format(train_losses.avg))
+
+                    progbar.update()
+                    train_loss.append(train_losses.avg)
+
+
+
+        print('saving model')
+        model.save(model, exp_name_dir, epoch)
+
+        train_loss = np.mean(train_loss)
+
+        '''val phase'''
+        val_loss = []
+
+
+        with tqdm(total=config.val_epoch_size) as progbar:
+
+            print('Val epoch {}/{}'.format(epoch+1, config.epoches))
+
+            for i, dataset in enumerate(val_loader):
+
+                if args.model == 'SiamRPN':
+
+                    val_closs, val_rloss, val_tloss = model.step(epoch, dataset, anchors, train=False)
+                    closs_ = val_closs.cpu().item()
+
+                    if np.isnan(closs_):
+                        sys.exit(0)
+
+                    val_closses.update(val_closs.cpu().item())
+                    val_rlosses.update(val_rloss.cpu().item())
+                    val_tlosses.update(val_tloss.cpu().item())
+
+                    progbar.set_postfix(closs='{:05.3f}'.format(val_closses.avg),
+                                        rloss='{:05.5f}'.format(val_rlosses.avg),
+                                        tloss='{:05.3f}'.format(val_tlosses.avg))
+                    progbar.update()
+
+                    val_loss.append(val_tlosses.avg)
+
+                    if i >= config.val_epoch_size - 1:
+                        break
+
+                else:
+
+                    loss = model.step(epoch, dataset, anchors, train=False)
+                    loss = loss.cpu().item()
+
+                    if np.isnan(loss):
+                        sys.exit(0)
+
+                    val_losses.update(loss.cpu().item())
+
+                    progbar.set_postfix(closs='{:05.3f}'.format(val_losses.avg))
+                    progbar.update()
+
+                    val_loss.append(val_losses.avg)
+
+                    if i >= config.val_epoch_size - 1:
+                        break
+
+        val_loss = np.mean(val_loss)
+        train_val_plot.update(train_loss, val_loss)
+
+        print ('Train loss: {}, val loss: {}'.format(train_loss, val_loss))
+
+        wandb.log({'Train loss': train_loss,
+                   'Val loss': val_loss})
+
+        # # Get curves of training
+        # net_path = os.path.join('{}/model'.format(exp_name_dir), 'model_e%d.pth' % (epoch + 1))
+        # tracker = TrackerSiamRPNBIG(params, net_path)
+        #
+        # # remove sequences report dir and results dir:
+        # if os.path.exists(experiment.result_dir):
+        #     shutil.rmtree(experiment.result_dir)
+        # if os.path.exists(experiment.report_dir):
+        #     shutil.rmtree(experiment.report_dir)
+        #
+        # experiment.run(tracker)
+        # performance = experiment.report([tracker.name])
+        #
+        # wandb.log({"Success_curve": wandb.Histogram(performance[tracker.name]['overall']['succ_curve']),
+        #            "AO": performance[tracker.name]['overall']['ao'],
+        #            "SR": performance[tracker.name]['overall']['sr'],
+        #            "FPS": performance[tracker.name]['overall']['speed_fps']},
+        #           )
+
+
+if __name__ == '__main__':
+    main()
