@@ -9,10 +9,10 @@ if __name__ == '__main__':
     modality = 1
 
     if modality == 1:
-        net_path = '../train/experiments/SiamRPN_RGB/model/model_e4.pth'
+        net_path = 'train/experiments/SiamRPN_RGB/model/model_e4.pth'
         experiment_name = 'RGB'
     else:
-        net_path = '../train/experiments/SiamRPN_RGBIR/model/model_e1.pth'
+        net_path = 'train/experiments/SiamRPN_RGBIR/model/model_e1.pth'
         experiment_name = 'RGBIR'
 
 

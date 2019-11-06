@@ -6,29 +6,30 @@ import argparse
 import numpy as np
 from tqdm import tqdm
 from config import config
-from net import TrackerSiamRPN, TrackerSiamFC
+
+
 from data_rgbt import TrainDataLoaderRGBT
 from torch.utils.data import DataLoader
 
 from util import util, AverageMeter, SavePlot
 from got10k.datasets import ImageNetVID, GOT10k
 from torchvision import datasets, transforms, utils
-from ..custom_transforms import Normalize, ToTensor, RandomStretch, \
-    RandomCrop, CenterCrop, RandomBlur, ColorAug
-import wandb
+from custom_transforms import Normalize, ToTensor, RandomStretch, RandomCrop, CenterCrop, RandomBlur, ColorAug
 from experimentrgbt import RGBTSequence
+
+import net
+
+import wandb
 
 
 torch.manual_seed(1234) # config.seed
 
 
 parser = argparse.ArgumentParser(description='PyTorch SiameseRPN Training')
-
-parser.add_argument('--train_path', default='/home/zuern/datasets/tracking/GOT10k', metavar='DIR',help='path to dataset')
 parser.add_argument('--experiment_name', default='SiamRPN', metavar='DIR',help='path to weight')
 parser.add_argument('--checkpoint_path', default=None, help='resume')
-parser.add_argument('--modality', default=None, type=int, help='how many modalities')
-parser.add_argument('--model', default=None, type=str, help='which model to use', choices=['SiamFC', 'SiamRPN'])
+parser.add_argument('--modality', default=None, type=int, help='how many modalities', choices=[1, 2])
+parser.add_argument('--model', default='SiamRPN', type=str, help='which model to use', choices=['SiamRPN'])
 
 
 def main():
@@ -38,15 +39,13 @@ def main():
     exp_name_dir = util.experiment_name_dir(args.experiment_name)
 
 
-    wandb.init(project="SiameseX", reinit=True)
+    wandb.init(project="SiameseRPN", reinit=True)
     wandb.config.update(args)  # adds all of the arguments as config variables
 
 
     '''model on gpu'''
     if args.model == 'SiamRPN':
-        model = TrackerSiamRPN(modality=args.modality)
-    elif args.model == 'SiamFC':
-        model = TrackerSiamFC(modality=args.modality)
+        model = net.TrackerSiamRPN(modality=args.modality)
     else:
         raise ValueError('Unknown model')
 
@@ -55,7 +54,7 @@ def main():
     assert name in ['VID', 'GOT-10k', 'All', 'RGBT-234']
 
     if name == 'GOT-10k':
-        root_dir = args.train_path
+        root_dir = '/home/zuern/datasets/tracking/GOT10k'
         seq_dataset = GOT10k(root_dir, subset='train')
         seq_dataset_val = GOT10k(root_dir, subset='val')
 
@@ -67,19 +66,9 @@ def main():
     elif name == 'RGBT-234':
         seq_dataset = RGBTSequence('/home/zuern/datasets/thermal_tracking/RGB-T234/', subset='train')
         seq_dataset_val = RGBTSequence('/home/zuern/datasets/thermal_tracking/RGB-T234/', subset='val')
+    else:
+        raise ValueError('Dataset not defined')
 
-
-    elif name == 'All':
-        root_dir_vid = '/home/arbi/desktop/ILSVRC'
-        seq_datasetVID = ImageNetVID(root_dir_vid, subset=('train'))
-        root_dir_got = args.train_path
-        seq_datasetGOT = GOT10k(root_dir_got, subset='train')
-        seq_dataset = util.data_split(seq_datasetVID, seq_datasetGOT)
-
-        seq_datasetVID = ImageNetVID(root_dir_vid, subset=('val'))
-        root_dir_got = args.train_path
-        seq_datasetGOT = GOT10k(root_dir_got, subset='val')
-        seq_dataset_val = util.data_split(seq_datasetVID, seq_datasetGOT)
 
     print('seq_dataset', len(seq_dataset))
     print('seq_dataset_val', len(seq_dataset_val))
@@ -88,6 +77,7 @@ def main():
     train_z_transforms = transforms.Compose([
         ToTensor()
     ])
+
     train_x_transforms = transforms.Compose([
         ToTensor()
     ])
@@ -101,6 +91,7 @@ def main():
 
     train_data  = TrainDataLoaderRGBT(seq_dataset, train_z_transforms, train_x_transforms, name)
     anchors = train_data.anchors
+
     train_loader = DataLoader(  dataset    = train_data,
                                 batch_size = config.train_batch_size,
                                 shuffle    = True,
@@ -108,14 +99,16 @@ def main():
                                 pin_memory = True)
 
     val_data  = TrainDataLoaderRGBT(seq_dataset_val, val_z_transforms, val_x_transforms, name)
+
     val_loader = DataLoader(    dataset    = val_data,
                                 batch_size = config.valid_batch_size,
                                 shuffle    = False,
                                 num_workers= config.valid_num_workers,
                                 pin_memory = True)
 
-    '''load weights'''
 
+
+    '''load weights'''
     if args.checkpoint_path:
         assert os.path.isfile(args.checkpoint_path), '{} is not valid checkpoint_path'.format(args.checkpoint_path)
         checkpoint = torch.load(args.checkpoint_path, map_location='cpu')
@@ -175,23 +168,6 @@ def main():
                     progbar.update()
                     train_loss.append(train_tlosses.avg)
 
-                else:
-                    loss = model.step(epoch, dataset, anchors, i, train=True)
-
-                    loss = loss.cpu().item()
-
-                    if np.isnan(loss):
-                        sys.exit(0)
-
-                    train_losses.update(loss.cpu().item())
-
-                    progbar.set_postfix(closs='{:05.3f}'.format(train_losses.avg))
-
-                    progbar.update()
-                    train_loss.append(train_losses.avg)
-
-
-
         print('saving model')
         model.save(model, exp_name_dir, epoch)
 
@@ -229,23 +205,6 @@ def main():
                     if i >= config.val_epoch_size - 1:
                         break
 
-                else:
-
-                    loss = model.step(epoch, dataset, anchors, train=False)
-                    loss = loss.cpu().item()
-
-                    if np.isnan(loss):
-                        sys.exit(0)
-
-                    val_losses.update(loss.cpu().item())
-
-                    progbar.set_postfix(closs='{:05.3f}'.format(val_losses.avg))
-                    progbar.update()
-
-                    val_loss.append(val_losses.avg)
-
-                    if i >= config.val_epoch_size - 1:
-                        break
 
         val_loss = np.mean(val_loss)
         train_val_plot.update(train_loss, val_loss)

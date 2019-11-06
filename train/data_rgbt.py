@@ -1,22 +1,18 @@
 # -*- coding: utf-8 -*-
 import os
-import sys
 import cv2
-import time
-import torch
 import random
 import numpy as np
-import os.path as osp
 from util import util
 from PIL import Image
 from config import config
 from torch.utils.data import Dataset
+import glob
+
 from got10k.datasets import ImageNetVID, GOT10k
 from torchvision import datasets, transforms, utils
 from got10k.datasets import ImageNetVID, GOT10k
-from custom_transforms import Normalize, ToTensor, RandomStretch, \
-    RandomCrop, CenterCrop, RandomBlur, ColorAug
-import glob
+from custom_transforms import Normalize, ToTensor, RandomStretch, RandomCrop, CenterCrop, RandomBlur, ColorAug
 
 
 class TrainDataLoaderRGBT(Dataset):

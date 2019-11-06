@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c26d431-2fbc-4e13-8f9b-affc3b8083c3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tracking/reports/RGBT/RGB/SiamRPN/performance.json" beforeDir="false" afterPath="$PROJECT_DIR$/tracking/reports/RGBT/RGB/SiamRPN/performance.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tracking/run_tracking.py" beforeDir="false" afterPath="$PROJECT_DIR$/tracking/run_tracking.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train/data_rgbt.py" beforeDir="false" afterPath="$PROJECT_DIR$/train/data_rgbt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/train/net.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train/wandb/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/train/wandb/debug.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,21 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/train/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="51" lean-forward="true" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor />
-              <second_editor />
+            <state relative-caret-position="340">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
@@ -34,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tracking/run_tracking.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="238">
+              <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -44,10 +40,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train/data_rgbt.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train/net.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-499">
+              <caret line="186" column="25" lean-forward="true" selection-start-line="186" selection-start-column="25" selection-end-line="186" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tracking/SiamRPNEval.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="129" column="34" lean-forward="true" selection-start-line="129" selection-start-column="34" selection-end-line="129" selection-end-column="34" />
+            <state relative-caret-position="102">
+              <caret line="125" column="18" lean-forward="true" selection-start-line="125" selection-start-column="18" selection-end-line="125" selection-end-column="18" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
                 <element signature="e#818#3658#0" />
@@ -65,16 +82,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tracking/reports/RGBT/RGB/SiamRPN/success_plot.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tracking/reports/RGBT/RGBIR/SiamRPN/success_plot.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -86,7 +93,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>eval</find>
       <find>class SiamRp</find>
       <find>rgbtda</find>
       <find>totens</find>
@@ -116,6 +122,7 @@
       <find>TrackerSiamRPNEval</find>
       <find>self.experiment_name</find>
       <find>custom</find>
+      <find>TrackerSiamRPN</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -131,8 +138,6 @@
         <option value="$PROJECT_DIR$/tracking/siamRPNBIG.py" />
         <option value="$PROJECT_DIR$/train/train_siamfc.py" />
         <option value="$PROJECT_DIR$/train/train_siamrpn.py" />
-        <option value="$PROJECT_DIR$/train/net.py" />
-        <option value="$PROJECT_DIR$/train/data_rgbt.py" />
         <option value="$PROJECT_DIR$/train/data.py" />
         <option value="$PROJECT_DIR$/tracking/custom_transforms.py" />
         <option value="$PROJECT_DIR$/train/experimentrgbt.py" />
@@ -141,9 +146,12 @@
         <option value="$PROJECT_DIR$/util/__init__.py" />
         <option value="$PROJECT_DIR$/tracking/network.py" />
         <option value="$PROJECT_DIR$/tracking/SiamRPNEval.py" />
-        <option value="$PROJECT_DIR$/tracking/run_tracking.py" />
-        <option value="$PROJECT_DIR$/train/train.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/tracking/run_tracking.py" />
+        <option value="$PROJECT_DIR$/train/data_rgbt.py" />
+        <option value="$PROJECT_DIR$/train/__init__.py" />
+        <option value="$PROJECT_DIR$/train/net.py" />
+        <option value="$PROJECT_DIR$/train/train.py" />
       </list>
     </option>
   </component>
@@ -192,8 +200,8 @@
       <recent name="$PROJECT_DIR$/tracking" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/train/experiments" />
       <recent name="$PROJECT_DIR$/train" />
+      <recent name="$PROJECT_DIR$/train/experiments" />
       <recent name="$PROJECT_DIR$/tracking" />
     </key>
   </component>
@@ -209,32 +217,10 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Multirun.Train RPNG RGB + RGB+IR">
+  <component name="RunManager" selected="Python.run_tracking">
     <configuration name="Train RPNG RGB + RGB+IR" type="Multirun" factoryName="Multirun" separateTabs="true" startOneByOne="true" markFailedProcess="true" hideSuccessProcess="false" delayTime="1">
       <runConfiguration name="train RPN RGB" type="Python" />
       <runConfiguration name="train RPN RGB + IR" type="Python" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Eval RPN" type="PythonConfigurationType" factoryName="Python">
-      <module name="SiamRPN-PyTorch" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="CUDA_VISIBLE_DEVICES" value="0" />
-      </envs>
-      <option name="SDK_HOME" value="/usr/bin/python3.5" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tracking/" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tracking/run_tracking.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -259,29 +245,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="train FC RGB + IR" type="PythonConfigurationType" factoryName="Python">
-      <module name="SiamRPN-PyTorch" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="CUDA_VISIBLE_DEVICES" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="/usr/bin/python3.5" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/train" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train/train.py" />
-      <option name="PARAMETERS" value="--modality 2 --experiment_name SiamFC_RGBIR --model SiamFC" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="train FC RGB" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="run_tracking" type="PythonConfigurationType" factoryName="Python">
       <module name="SiamRPN-PyTorch" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -290,12 +254,12 @@
         <env name="CUDA_VISIBLE_DEVICES" value="0" />
       </envs>
       <option name="SDK_HOME" value="/usr/bin/python3.5" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/train" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train/train.py" />
-      <option name="PARAMETERS" value="--modality 1 --experiment_name SiamFC_RGB --model SiamFC" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tracking/run_tracking.py" />
+      <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -350,10 +314,8 @@
     <list>
       <item itemvalue="Multirun.Train RPNG RGB + RGB+IR" />
       <item itemvalue="Python.train RPN RGB" />
-      <item itemvalue="Python.train FC RGB" />
       <item itemvalue="Python.train RPN RGB + IR" />
-      <item itemvalue="Python.train FC RGB + IR" />
-      <item itemvalue="Python.Eval RPN" />
+      <item itemvalue="Python.run_tracking" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -383,15 +345,15 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18266085" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18266085" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32991612" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32991612" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.38676608" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.38676608" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.38210624" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -415,17 +377,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/train/net.py</url>
-          <line>60</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/train/net.py</url>
-          <line>184</line>
+          <line>182</line>
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/train/data_rgbt.py</url>
-          <line>438</line>
+          <line>434</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -516,13 +473,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train/util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="98" column="43" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/train/experiments/SiamRPN/train_val_plot.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -556,16 +506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/train/data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -583,16 +523,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train/data_rgbt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="124" column="50" lean-forward="true" selection-start-line="124" selection-start-column="44" selection-end-line="124" selection-end-column="50" />
-          <folding>
-            <element signature="e#24#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tracking/data_loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -601,16 +531,6 @@
             <element signature="e#25#34#0" expanded="true" />
             <element signature="e#7420#7932#0" />
             <element signature="e#8036#9294#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train/net.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="80" column="44" lean-forward="true" selection-start-line="80" selection-start-column="44" selection-end-line="80" selection-end-column="44" />
-          <folding>
-            <element signature="e#25#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -688,32 +608,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tracking/SiamRPNEval.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="129" column="34" lean-forward="true" selection-start-line="129" selection-start-column="34" selection-end-line="129" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#818#3658#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tracking/run_tracking.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tracking/reports/RGBT/RGB/SiamRPN/success_plot.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/tracking/reports/RGBT/RGBIR/SiamRPN/success_plot.png">
       <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tracking/network.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -722,18 +629,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train/train.py">
+    <entry file="file://$PROJECT_DIR$/../.local/lib/python3.5/site-packages/torch/serialization.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="51" lean-forward="true" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+        <state relative-caret-position="57">
+          <caret line="409" column="42" lean-forward="true" selection-start-line="409" selection-start-column="42" selection-end-line="409" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/train/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/data_rgbt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracking/SiamRPNEval.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="125" column="18" lean-forward="true" selection-start-line="125" selection-start-column="18" selection-end-line="125" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#818#3658#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracking/run_tracking.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-499">
+          <caret line="186" column="25" lean-forward="true" selection-start-line="186" selection-start-column="25" selection-end-line="186" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>

@@ -1,14 +1,7 @@
 import torch
-import numpy as np
 import torch.nn.functional as F
-import torchvision.transforms as transforms
-from train.custom_transforms import ToTensor
-
-from torchvision.models import alexnet
-from torch.autograd import Variable
 from torch import nn
 from config import config
-
 
 
 class _BatchNorm2d(nn.BatchNorm2d):
