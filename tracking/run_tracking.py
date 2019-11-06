@@ -6,6 +6,7 @@ from train.experimentrgbt import ExperimentRGBT
 if __name__ == '__main__':
 
 
+    # If modality==1: use only RGB. If modality==2: RGB+IR
     modality = 1
 
     if modality == 1:

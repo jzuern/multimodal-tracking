@@ -6,26 +6,16 @@ import argparse
 import numpy as np
 from tqdm import tqdm
 from config import config
-import shutil
-
 from data_rgbt import TrainDataLoaderRGBT
 from torch.utils.data import DataLoader
-
 from util import util, AverageMeter, SavePlot
 from got10k.datasets import ImageNetVID, GOT10k
 from torchvision import datasets, transforms
 from custom_transforms import Normalize, ToTensor, RandomStretch, RandomCrop, CenterCrop, RandomBlur, ColorAug
 from experimentrgbt import RGBTSequence
-
 import net
-import tracking
-import train
-
-# from train.experimentrgbt import ExperimentRGBT
-
 
 import wandb
-
 
 torch.manual_seed(1234) # config.seed
 
@@ -34,62 +24,6 @@ parser = argparse.ArgumentParser(description='PyTorch SiameseRPN Training')
 parser.add_argument('--experiment_name', default='SiamRPN', metavar='DIR',help='path to weight')
 parser.add_argument('--checkpoint_path', default=None, help='resume')
 parser.add_argument('--modality', default=None, type=int, help='how many modalities', choices=[1, 2])
-parser.add_argument('--model', default='SiamRPN', type=str, help='which model to use', choices=['SiamRPN'])
-
-
-
-
-# def plot_curves(modality, net_path):
-#
-#
-#     if modality == 1:
-#         experiment_name = 'RGB'
-#     else:
-#         experiment_name = 'RGBIR'
-#
-#     tracker = tracking.SiamRPNEval.TrackerSiamRPNEval(modality=modality,
-#                                  model_path=net_path)
-#
-#     experiment_val = train.experimentrgbt.ExperimentRGBT('/home/zuern/datasets/thermal_tracking/RGB-T234/',
-#                                  experiment_name=experiment_name,
-#                                  subset='val')
-#
-#
-#     # remove sequences report dir and results dir:
-#     if os.path.exists(experiment_val.result_dir):
-#         shutil.rmtree(experiment_val.result_dir)
-#     if os.path.exists(experiment_val.report_dir):
-#         shutil.rmtree(experiment_val.report_dir)
-#
-#     experiment_val.run(tracker)
-#     performance = experiment_val.report([tracker.name], return_report=True)
-#
-#     wandb.log({"Success curve train": wandb.Histogram(performance[tracker.name]['overall']['succ_curve']),
-#                "AO train": performance[tracker.name]['overall']['ao'],
-#                "SR train": performance[tracker.name]['overall']['sr']},
-#               )
-#
-#
-#
-#     experiment_train = ExperimentRGBT('/home/zuern/datasets/thermal_tracking/RGB-T234/',
-#                                  experiment_name=experiment_name,
-#                                  subset='val')
-#
-#
-#     # remove sequences report dir and results dir:
-#     if os.path.exists(experiment_train.result_dir):
-#         shutil.rmtree(experiment_train.result_dir)
-#     if os.path.exists(experiment_train.report_dir):
-#         shutil.rmtree(experiment_train.report_dir)
-#
-#     experiment_train.run(tracker)
-#     performance = experiment_train.report([tracker.name], return_report=True)
-#
-#     wandb.log({"Success curve train": wandb.Histogram(performance[tracker.name]['overall']['succ_curve']),
-#                "AO train": performance[tracker.name]['overall']['ao'],
-#                "SR train": performance[tracker.name]['overall']['sr']},
-#               )
-
 
 def main():
 
@@ -103,10 +37,7 @@ def main():
 
 
     '''model on gpu'''
-    if args.model == 'SiamRPN':
-        model = net.TrackerSiamRPN(modality=args.modality)
-    else:
-        raise ValueError('Unknown model')
+    model = net.TrackerSiamRPN(modality=args.modality)
 
     name = 'RGBT-234'
 
@@ -166,7 +97,6 @@ def main():
                                 shuffle    = False,
                                 num_workers= config.valid_num_workers,
                                 pin_memory = True)
-
 
 
     '''load weights'''
@@ -269,16 +199,6 @@ def main():
 
         wandb.log({'Train loss': train_loss,
                    'Val loss': val_loss})
-
-
-
-        model_save_dir_pth = '{}/model'.format(exp_name_dir)
-        if not os.path.exists(model_save_dir_pth):
-                os.makedirs(model_save_dir_pth)
-        net_path = os.path.join(model_save_dir_pth, 'model_e%d.pth' % (epoch + 1))
-
-
-        # plot_curves(args.modality, net_path)
 
 
 if __name__ == '__main__':
