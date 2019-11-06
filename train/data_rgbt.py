@@ -10,10 +10,6 @@ from torch.utils.data import Dataset
 import glob
 
 from got10k.datasets import ImageNetVID, GOT10k
-from torchvision import datasets, transforms, utils
-from got10k.datasets import ImageNetVID, GOT10k
-from custom_transforms import Normalize, ToTensor, RandomStretch, RandomCrop, CenterCrop, RandomBlur, ColorAug
-
 
 class TrainDataLoaderRGBT(Dataset):
     def __init__(self, seq_dataset, z_transforms, x_transforms, name = 'RGBT-234'):
@@ -517,7 +513,9 @@ class TrainDataLoaderRGBT(Dataset):
 
         self._pick_img_pairs(index)
         self.open()
+
         self._tranform()
+
         regression_target, conf_target = self._target()
         self.count += 1
 

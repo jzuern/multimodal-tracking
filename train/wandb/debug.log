@@ -1,73 +1,41 @@
-2019-11-06 16:25:29,814 DEBUG   MainThread:28548 [wandb_config.py:_load_defaults():87] no defaults not found in config-defaults.yaml
-2019-11-06 16:25:29,833 DEBUG   MainThread:28548 [cmd.py:execute():722] Popen(['git', 'cat-file', '--batch-check'], cwd=/home/zuern/SiamRPN-PyTorch, universal_newlines=False, shell=None, istream=<valid stream>)
-2019-11-06 16:25:29,842 DEBUG   MainThread:28548 [cmd.py:execute():722] Popen(['git', 'rev-parse', '--show-toplevel'], cwd=/home/zuern/SiamRPN-PyTorch, universal_newlines=False, shell=None, istream=None)
-2019-11-06 16:25:29,848 DEBUG   MainThread:28548 [cmd.py:execute():722] Popen(['git', 'status', '--porcelain', '--untracked-files'], cwd=/home/zuern/SiamRPN-PyTorch, universal_newlines=False, shell=None, istream=None)
-2019-11-06 16:25:29,927 DEBUG   MainThread:28548 [run_manager.py:__init__():535] Initialized sync for SiameseRPN/y99xn8br
-2019-11-06 16:25:29,933 INFO    MainThread:28548 [run_manager.py:wrap_existing_process():1115] wrapping existing process 28423
-2019-11-06 16:25:29,939 INFO    MainThread:28548 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): pypi.org
-2019-11-06 16:25:29,979 DEBUG   MainThread:28548 [connectionpool.py:_make_request():388] "GET /pypi/wandb/json HTTP/1.1" 200 37397
-2019-11-06 16:25:29,997 INFO    MainThread:28548 [run_manager.py:init_run():912] system metrics and metadata threads started
-2019-11-06 16:25:29,998 INFO    MainThread:28548 [run_manager.py:init_run():946] upserting run before process can begin, waiting at most 10 seconds
-2019-11-06 16:25:30,013 INFO    Thread-14 :28548 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): api.wandb.ai
-2019-11-06 16:25:30,185 DEBUG   Thread-14 :28548 [connectionpool.py:_make_request():388] "POST /graphql HTTP/1.1" 200 537
-2019-11-06 16:25:30,194 INFO    Thread-14 :28548 [run_manager.py:_upsert_run():1019] saving patches
-2019-11-06 16:25:30,195 DEBUG   Thread-14 :28548 [cmd.py:execute():722] Popen(['git', 'rev-parse', '--show-toplevel'], cwd=/home/zuern/SiamRPN-PyTorch, universal_newlines=False, shell=None, istream=None)
-2019-11-06 16:25:30,203 DEBUG   Thread-14 :28548 [cmd.py:execute():722] Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/home/zuern/SiamRPN-PyTorch, universal_newlines=False, shell=None, istream=None)
-2019-11-06 16:25:30,212 DEBUG   Thread-14 :28548 [cmd.py:execute():722] Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/home/zuern/SiamRPN-PyTorch, universal_newlines=False, shell=None, istream=None)
-2019-11-06 16:25:30,224 DEBUG   Thread-14 :28548 [cmd.py:execute():722] Popen(['git', 'version'], cwd=/home/zuern/SiamRPN-PyTorch, universal_newlines=False, shell=None, istream=None)
-2019-11-06 16:25:30,299 DEBUG   Thread-14 :28548 [cmd.py:execute():722] Popen(['git', 'merge-base', 'HEAD', '59c37f86709b4d4da569c7fab0460cf92e3eb000'], cwd=/home/zuern/SiamRPN-PyTorch, universal_newlines=False, shell=None, istream=None)
-2019-11-06 16:25:30,310 INFO    Thread-14 :28548 [run_manager.py:_upsert_run():1023] saving pip packages
-2019-11-06 16:25:30,312 INFO    Thread-14 :28548 [run_manager.py:_upsert_run():1025] initializing streaming files api
-2019-11-06 16:25:30,314 INFO    Thread-14 :28548 [run_manager.py:_upsert_run():1032] unblocking file change observer, beginning sync with W&B servers
-2019-11-06 16:25:30,314 INFO    MainThread:28548 [run_manager.py:wrap_existing_process():1132] informing user process we are ready to proceed
-2019-11-06 16:25:30,321 INFO    Thread-15 :28548 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): api.wandb.ai
-2019-11-06 16:25:30,321 INFO    MainThread:28548 [run_manager.py:_sync_etc():1239] entering loop for messages from user process
-2019-11-06 16:25:30,474 DEBUG   Thread-15 :28548 [connectionpool.py:_make_request():388] "POST /graphql HTTP/1.1" 200 46
-2019-11-06 16:25:30,827 INFO    Thread-3  :28548 [run_manager.py:_on_file_modified():682] file/dir modified: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_152528-y99xn8br/config.yaml
-2019-11-06 16:25:30,845 INFO    Thread-3  :28548 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): api.wandb.ai
-2019-11-06 16:25:31,053 DEBUG   Thread-3  :28548 [connectionpool.py:_make_request():388] "POST /graphql HTTP/1.1" 200 781
-2019-11-06 16:25:31,059 INFO    Thread-3  :28548 [run_manager.py:_on_file_created():671] file/dir created: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_152528-y99xn8br/output.log
-2019-11-06 16:25:31,060 INFO    Thread-3  :28548 [run_manager.py:_on_file_created():671] file/dir created: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_152528-y99xn8br/diff.patch
-2019-11-06 16:25:31,061 INFO    Thread-3  :28548 [run_manager.py:_on_file_created():671] file/dir created: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_152528-y99xn8br/requirements.txt
-2019-11-06 16:25:31,062 INFO    Thread-3  :28548 [run_manager.py:_on_file_created():671] file/dir created: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_152528-y99xn8br/wandb-metadata.json
-2019-11-06 16:25:31,072 INFO    Thread-16 :28548 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): api.wandb.ai
-2019-11-06 16:25:31,227 DEBUG   Thread-16 :28548 [connectionpool.py:_make_request():388] "POST /graphql HTTP/1.1" 200 751
-2019-11-06 16:25:31,233 INFO    Thread-16 :28548 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): storage.googleapis.com
-2019-11-06 16:25:31,704 DEBUG   Thread-16 :28548 [connectionpool.py:_make_request():388] "PUT /wandb-production.appspot.com/jannik-zuern/SiameseRPN/y99xn8br/diff.patch?Expires=1573053991&GoogleAccessId=gorilla-cloud-storage%40wandb-production.iam.gserviceaccount.com&Signature=owSt7pKUZiZu1hWFrbmgqpJ1sS8Qubtgj9rAbd6f4wWvZdoXhe5yLlGb4X7a6%2BR88253iMMuZRPYBYDB58oun1SkgbEM8SKyoMoSnzdpAPPeWhwjPDq12TUt894TwUBLNZGGlKPBFFOXLNpOwPoUA9tCKomNfTiiHJIYe5WPi0lsaKz%2FO7qpu5E%2FWd1oqJ9iiE7dGjqbLhNrZlwR8Tm%2F8tRcEBqDB5d8J47Yh2R1vzuM4y%2FiQCwYHV5KsX5iEl6udXFe6Fj%2BnqbTm0AKseoTbbQDjTFaS8h9bw5siO48c98K9rAwRz2OSi24tFQHkhGCPO2088MQW7oY9kd5TYtzyg%3D%3D HTTP/1.1" 200 0
-2019-11-06 16:25:32,830 INFO    Thread-17 :28548 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): api.wandb.ai
-2019-11-06 16:25:32,930 INFO    Thread-18 :28548 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): api.wandb.ai
-2019-11-06 16:25:32,993 DEBUG   Thread-17 :28548 [connectionpool.py:_make_request():388] "POST /graphql HTTP/1.1" 200 773
-2019-11-06 16:25:32,999 INFO    Thread-17 :28548 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): storage.googleapis.com
-2019-11-06 16:25:33,029 INFO    Thread-19 :28548 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): api.wandb.ai
-2019-11-06 16:25:33,096 DEBUG   Thread-18 :28548 [connectionpool.py:_make_request():388] "POST /graphql HTTP/1.1" 200 763
-2019-11-06 16:25:33,101 INFO    Thread-18 :28548 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): storage.googleapis.com
-2019-11-06 16:25:33,186 DEBUG   Thread-19 :28548 [connectionpool.py:_make_request():388] "POST /graphql HTTP/1.1" 200 777
-2019-11-06 16:25:33,192 INFO    Thread-19 :28548 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): storage.googleapis.com
-2019-11-06 16:25:33,295 DEBUG   Thread-17 :28548 [connectionpool.py:_make_request():388] "PUT /wandb-production.appspot.com/jannik-zuern/SiameseRPN/y99xn8br/config.yaml?Expires=1573053992&GoogleAccessId=gorilla-cloud-storage%40wandb-production.iam.gserviceaccount.com&Signature=Jsft%2Ffzd4Ks%2B%2BxCs8FYvt6ZIpJCDiV4Y7vGxzT4F54fR5d9OBn%2BWkdgz6LsQnJtxhZ36dKhs2o8CjACnzJh5YJU%2BcYZuTSsuVfyvib9kKNu7fR8I8d7zv1Fwd2vMsbgWS2vPO1AoXuHrcPpigKZLyjgcY%2BL5eqEpqBQ2fdOCh5s%2BD0tn0gD6oQ3Vg1ssSfSx%2BrTtieQHYnsaB%2B9XS%2BRIvD82wmNUVIF6xQdcfKLbUVM6POu3FOemSJuF4jjjOriOWDkYoW0eVt%2FDIeYBQruF%2Fd%2BW9xbeJDcm74%2FWbvF0OJnrPvm1tjorIv5mfgxTjw8nlkWC%2BWRSQ583bT0hjObc%2FQ%3D%3D HTTP/1.1" 200 0
-2019-11-06 16:25:33,405 DEBUG   Thread-18 :28548 [connectionpool.py:_make_request():388] "PUT /wandb-production.appspot.com/jannik-zuern/SiameseRPN/y99xn8br/requirements.txt?Expires=1573053993&GoogleAccessId=gorilla-cloud-storage%40wandb-production.iam.gserviceaccount.com&Signature=RSeqm%2Fc0KExEk4ggVoyIFCBr%2FaID2yJDTIO%2FBTGJCtJVeNtwDFZCBBmoYvdCzxx1iem6HCJhkA0cR8baTg7q8YqjeXFXDOWfgCMNlRvwGt0CyajsuiHzDxV3oy2UICsvqGeLpq9vZHwet5O3axtJPPw158sZ3ND22GCZsFdPZ5byPC%2Fv1YYiJw73RVh6PK8TIE9oDMrRgMcAWFpC%2BroSNLRMtVN32SnRY9Tv7rbYgfn2E7eoXNIsbfSnlH05fhO5dAFWqhRUNL08eN0SYGI3lCECEmSLWiNJx3rJMtFCBFLIZmPKnARY%2BqmBZkRQMXioj0GKKbdd4ipd6xSFDJkW9A%3D%3D HTTP/1.1" 200 0
-2019-11-06 16:25:33,498 DEBUG   Thread-19 :28548 [connectionpool.py:_make_request():388] "PUT /wandb-production.appspot.com/jannik-zuern/SiameseRPN/y99xn8br/wandb-metadata.json?Expires=1573053993&GoogleAccessId=gorilla-cloud-storage%40wandb-production.iam.gserviceaccount.com&Signature=K41wYfprvMpEYVSxWMiy71VlYUM4G%2F%2Fwozp2wPNWEDo2Meh2Z2w3MIh2YM%2FiH85MV0SJBaa8VtxEDV74PdubnR2XGrfLztmKCGs3NakqJuopcOf3JOw4t9i915DyFhjqIq3QtjhfhgtUDxpyc60%2BPEB5hItWp30%2FMZLY0I82NFxONzFJ565aLzdTKeWACCduLZmf4Y496pOfkCJ99JaUVxwbTCRlZH14m8JD1XFIUI3dwZ%2BYO0Ub4ULMtGyn%2FNN6aINLTdyc6t%2F17%2BRU7IB6BEyBPBHlq2WS0UemzO8fa%2BbgqWzRpxyq9Ob8Uj6Tn9FBTkGS1CELHvTWTCBIccXaqA%3D%3D HTTP/1.1" 200 0
-2019-11-06 16:25:35,309 INFO    Thread-7  :28548 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): api.wandb.ai
-2019-11-06 16:25:35,499 DEBUG   Thread-7  :28548 [connectionpool.py:_make_request():388] "POST /files/jannik-zuern/SiameseRPN/y99xn8br/file_stream HTTP/1.1" 200 311
-2019-11-06 16:25:35,834 INFO    Thread-3  :28548 [run_manager.py:_on_file_modified():682] file/dir modified: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_152528-y99xn8br/output.log
-2019-11-06 16:25:37,836 DEBUG   Thread-7  :28548 [connectionpool.py:_make_request():388] "POST /files/jannik-zuern/SiameseRPN/y99xn8br/file_stream HTTP/1.1" 200 311
-2019-11-06 16:25:39,837 INFO    Thread-3  :28548 [run_manager.py:_on_file_modified():682] file/dir modified: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_152528-y99xn8br/output.log
-2019-11-06 16:25:40,408 DEBUG   Thread-7  :28548 [connectionpool.py:_make_request():388] "POST /files/jannik-zuern/SiameseRPN/y99xn8br/file_stream HTTP/1.1" 200 311
-2019-11-06 16:25:40,837 INFO    Thread-3  :28548 [run_manager.py:_on_file_modified():682] file/dir modified: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_152528-y99xn8br/output.log
-2019-11-06 16:25:41,838 INFO    Thread-3  :28548 [run_manager.py:_on_file_modified():682] file/dir modified: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_152528-y99xn8br/output.log
-2019-11-06 16:25:42,597 DEBUG   Thread-7  :28548 [connectionpool.py:_make_request():388] "POST /files/jannik-zuern/SiameseRPN/y99xn8br/file_stream HTTP/1.1" 200 311
-2019-11-06 16:25:42,838 INFO    Thread-3  :28548 [run_manager.py:_on_file_modified():682] file/dir modified: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_152528-y99xn8br/output.log
-2019-11-06 16:25:43,839 INFO    Thread-3  :28548 [run_manager.py:_on_file_modified():682] file/dir modified: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_152528-y99xn8br/output.log
-2019-11-06 16:25:44,645 DEBUG   Thread-7  :28548 [connectionpool.py:_make_request():388] "POST /files/jannik-zuern/SiameseRPN/y99xn8br/file_stream HTTP/1.1" 200 311
-2019-11-06 16:25:44,839 INFO    Thread-3  :28548 [run_manager.py:_on_file_modified():682] file/dir modified: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_152528-y99xn8br/output.log
-2019-11-06 16:25:45,479 INFO    Thread-15 :28548 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): api.wandb.ai
-2019-11-06 16:25:45,688 DEBUG   Thread-15 :28548 [connectionpool.py:_make_request():388] "POST /graphql HTTP/1.1" 200 46
-2019-11-06 16:25:45,840 INFO    Thread-3  :28548 [run_manager.py:_on_file_modified():682] file/dir modified: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_152528-y99xn8br/output.log
-2019-11-06 16:25:46,799 DEBUG   Thread-7  :28548 [connectionpool.py:_make_request():388] "POST /files/jannik-zuern/SiameseRPN/y99xn8br/file_stream HTTP/1.1" 200 311
-2019-11-06 16:25:46,840 INFO    Thread-3  :28548 [run_manager.py:_on_file_modified():682] file/dir modified: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_152528-y99xn8br/output.log
-2019-11-06 16:25:46,841 INFO    Thread-3  :28548 [run_manager.py:_on_file_modified():682] file/dir modified: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_152528-y99xn8br/wandb-metadata.json
-2019-11-06 16:25:47,841 INFO    Thread-3  :28548 [run_manager.py:_on_file_modified():682] file/dir modified: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_152528-y99xn8br/output.log
-2019-11-06 16:25:48,034 INFO    MainThread:28548 [run_manager.py:_sync_etc():1295] process received interrupt signal, shutting down
-2019-11-06 16:25:48,035 INFO    MainThread:28548 [run_manager.py:_sync_etc():1348] closing log streams and sending exitcode to W&B
-2019-11-06 16:25:48,048 INFO    MainThread:28548 [run_manager.py:shutdown():1039] shutting down system stats and metadata service
-Thread:28548 [y99xn8br:run_manager.py:_sync_etc():1348] closing log streams and sending exitcode to W&B
-2019-11-06 16:25:48,048 INFO    MainThread:28548 [y99xn8br:run_manager.py:shutdown():1039] shutting down system stats and metadata service
+2019-11-06 16:52:42,234 DEBUG   MainThread:3779 [wandb_config.py:_load_defaults():87] no defaults not found in config-defaults.yaml
+2019-11-06 16:52:42,254 DEBUG   MainThread:3779 [cmd.py:execute():722] Popen(['git', 'cat-file', '--batch-check'], cwd=/home/zuern/SiamRPN-PyTorch, universal_newlines=False, shell=None, istream=<valid stream>)
+2019-11-06 16:52:42,264 DEBUG   MainThread:3779 [cmd.py:execute():722] Popen(['git', 'rev-parse', '--show-toplevel'], cwd=/home/zuern/SiamRPN-PyTorch, universal_newlines=False, shell=None, istream=None)
+2019-11-06 16:52:42,269 DEBUG   MainThread:3779 [cmd.py:execute():722] Popen(['git', 'status', '--porcelain', '--untracked-files'], cwd=/home/zuern/SiamRPN-PyTorch, universal_newlines=False, shell=None, istream=None)
+2019-11-06 16:52:42,291 DEBUG   MainThread:3779 [run_manager.py:__init__():535] Initialized sync for SiameseRPN/cvw3p3ed
+2019-11-06 16:52:42,295 INFO    MainThread:3779 [run_manager.py:wrap_existing_process():1115] wrapping existing process 3732
+2019-11-06 16:52:42,302 INFO    MainThread:3779 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): pypi.org
+2019-11-06 16:52:42,342 DEBUG   MainThread:3779 [connectionpool.py:_make_request():388] "GET /pypi/wandb/json HTTP/1.1" 200 37397
+2019-11-06 16:52:42,359 INFO    MainThread:3779 [run_manager.py:init_run():912] system metrics and metadata threads started
+2019-11-06 16:52:42,360 INFO    MainThread:3779 [run_manager.py:init_run():946] upserting run before process can begin, waiting at most 10 seconds
+2019-11-06 16:52:42,375 INFO    Thread-14 :3779 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): api.wandb.ai
+2019-11-06 16:52:42,562 DEBUG   Thread-14 :3779 [connectionpool.py:_make_request():388] "POST /graphql HTTP/1.1" 200 541
+2019-11-06 16:52:42,571 INFO    Thread-14 :3779 [run_manager.py:_upsert_run():1019] saving patches
+2019-11-06 16:52:42,571 DEBUG   Thread-14 :3779 [cmd.py:execute():722] Popen(['git', 'rev-parse', '--show-toplevel'], cwd=/home/zuern/SiamRPN-PyTorch, universal_newlines=False, shell=None, istream=None)
+2019-11-06 16:52:42,581 DEBUG   Thread-14 :3779 [cmd.py:execute():722] Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/home/zuern/SiamRPN-PyTorch, universal_newlines=False, shell=None, istream=None)
+2019-11-06 16:52:42,592 DEBUG   Thread-14 :3779 [cmd.py:execute():722] Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/home/zuern/SiamRPN-PyTorch, universal_newlines=False, shell=None, istream=None)
+2019-11-06 16:52:42,611 DEBUG   Thread-14 :3779 [cmd.py:execute():722] Popen(['git', 'version'], cwd=/home/zuern/SiamRPN-PyTorch, universal_newlines=False, shell=None, istream=None)
+2019-11-06 16:52:42,659 DEBUG   Thread-14 :3779 [cmd.py:execute():722] Popen(['git', 'merge-base', 'HEAD', '83ce4c79596cbc6c1a6819c2f10529649135d718'], cwd=/home/zuern/SiamRPN-PyTorch, universal_newlines=False, shell=None, istream=None)
+2019-11-06 16:52:42,668 INFO    Thread-14 :3779 [run_manager.py:_upsert_run():1023] saving pip packages
+2019-11-06 16:52:42,671 INFO    Thread-14 :3779 [run_manager.py:_upsert_run():1025] initializing streaming files api
+2019-11-06 16:52:42,673 INFO    Thread-14 :3779 [run_manager.py:_upsert_run():1032] unblocking file change observer, beginning sync with W&B servers
+2019-11-06 16:52:42,673 INFO    MainThread:3779 [run_manager.py:wrap_existing_process():1132] informing user process we are ready to proceed
+2019-11-06 16:52:42,679 INFO    Thread-15 :3779 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): api.wandb.ai
+2019-11-06 16:52:42,680 INFO    MainThread:3779 [run_manager.py:_sync_etc():1239] entering loop for messages from user process
+2019-11-06 16:52:42,827 DEBUG   Thread-15 :3779 [connectionpool.py:_make_request():388] "POST /graphql HTTP/1.1" 200 46
+2019-11-06 16:52:43,247 INFO    Thread-3  :3779 [run_manager.py:_on_file_modified():682] file/dir modified: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_155241-cvw3p3ed/config.yaml
+2019-11-06 16:52:43,265 INFO    Thread-3  :3779 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): api.wandb.ai
+2019-11-06 16:52:43,442 DEBUG   Thread-3  :3779 [connectionpool.py:_make_request():388] "POST /graphql HTTP/1.1" 200 787
+2019-11-06 16:52:43,449 INFO    Thread-3  :3779 [run_manager.py:_on_file_created():671] file/dir created: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_155241-cvw3p3ed/wandb-metadata.json
+2019-11-06 16:52:43,450 INFO    Thread-3  :3779 [run_manager.py:_on_file_created():671] file/dir created: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_155241-cvw3p3ed/requirements.txt
+2019-11-06 16:52:43,451 INFO    Thread-3  :3779 [run_manager.py:_on_file_created():671] file/dir created: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_155241-cvw3p3ed/diff.patch
+2019-11-06 16:52:43,451 INFO    Thread-3  :3779 [run_manager.py:_on_file_created():671] file/dir created: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_155241-cvw3p3ed/output.log
+2019-11-06 16:52:45,262 INFO    Thread-16 :3779 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): api.wandb.ai
+2019-11-06 16:52:45,423 DEBUG   Thread-16 :3779 [connectionpool.py:_make_request():388] "POST /graphql HTTP/1.1" 200 779
+2019-11-06 16:52:45,429 INFO    Thread-16 :3779 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): storage.googleapis.com
+2019-11-06 16:52:45,736 DEBUG   Thread-16 :3779 [connectionpool.py:_make_request():388] "PUT /wandb-production.appspot.com/jannik-zuern/SiameseRPN/cvw3p3ed/___batch_archive_1.tgz?Expires=1573055625&GoogleAccessId=gorilla-cloud-storage%40wandb-production.iam.gserviceaccount.com&Signature=LFljtQEvymhRh5PdqKo0qYM3x3UklKnIBH90G5xFfD9ew%2BV72JxHXULR44lkHfPW%2FGUml8YTumEJifkds36s04UEwBqZMGBRalS1dfMH%2BlQ3645oDBsXWRU6dUo6I6Ai6HmK8MG40o1Hlk9XlTZHsCOTYVFZ7ltnbjN%2F%2FD7JZlGB3Mme3i0RaVwtnsxPqkRMyXY6s8hBH3XSOlE3BIwraTcA1C7KnOCuNG%2F4adWg7mOCagO9L%2FU5sNX2CmbrJhtaUEZERsX2pVs3SspUInoi1x5Ex8C4VOc4J84JV7g8e0kw0NO5VT3ljamErNyZoJTBztiKMkcGMdD4ahGsCYl%2BAg%3D%3D HTTP/1.1" 200 0
+2019-11-06 16:52:48,156 INFO    Thread-7  :3779 [connectionpool.py:_new_conn():761] Starting new HTTPS connection (1): api.wandb.ai
+2019-11-06 16:52:48,250 INFO    Thread-3  :3779 [run_manager.py:_on_file_modified():682] file/dir modified: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_155241-cvw3p3ed/output.log
+2019-11-06 16:52:48,335 DEBUG   Thread-7  :3779 [connectionpool.py:_make_request():388] "POST /files/jannik-zuern/SiameseRPN/cvw3p3ed/file_stream HTTP/1.1" 200 311
+2019-11-06 16:52:49,250 INFO    Thread-3  :3779 [run_manager.py:_on_file_modified():682] file/dir modified: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_155241-cvw3p3ed/output.log
+2019-11-06 16:52:49,250 INFO    Thread-3  :3779 [cvw3p3ed:run_manager.py:_on_file_modified():682] file/dir modified: /home/zuern/SiamRPN-PyTorch/train/wandb/run-20191106_155241-cvw3p3ed/output.log

@@ -1,0 +1,4 @@
+seq_dataset 214
+seq_dataset_val 20
+Train epoch 1/200
+  0% 0/1000 [00:00<?, ?it/s]  0% 0/1000 [00:04<?, ?it/s, closs=10.744, rloss=0.17943, tloss=11.641]  0% 1/1000 [00:04<1:22:21,  4.95s/it, closs=10.744, rloss=0.17943, tloss=11.641]

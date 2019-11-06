@@ -6,18 +6,23 @@ import argparse
 import numpy as np
 from tqdm import tqdm
 from config import config
-
+import shutil
 
 from data_rgbt import TrainDataLoaderRGBT
 from torch.utils.data import DataLoader
 
 from util import util, AverageMeter, SavePlot
 from got10k.datasets import ImageNetVID, GOT10k
-from torchvision import datasets, transforms, utils
+from torchvision import datasets, transforms
 from custom_transforms import Normalize, ToTensor, RandomStretch, RandomCrop, CenterCrop, RandomBlur, ColorAug
 from experimentrgbt import RGBTSequence
 
 import net
+import tracking
+import train
+
+# from train.experimentrgbt import ExperimentRGBT
+
 
 import wandb
 
@@ -30,6 +35,60 @@ parser.add_argument('--experiment_name', default='SiamRPN', metavar='DIR',help='
 parser.add_argument('--checkpoint_path', default=None, help='resume')
 parser.add_argument('--modality', default=None, type=int, help='how many modalities', choices=[1, 2])
 parser.add_argument('--model', default='SiamRPN', type=str, help='which model to use', choices=['SiamRPN'])
+
+
+
+
+# def plot_curves(modality, net_path):
+#
+#
+#     if modality == 1:
+#         experiment_name = 'RGB'
+#     else:
+#         experiment_name = 'RGBIR'
+#
+#     tracker = tracking.SiamRPNEval.TrackerSiamRPNEval(modality=modality,
+#                                  model_path=net_path)
+#
+#     experiment_val = train.experimentrgbt.ExperimentRGBT('/home/zuern/datasets/thermal_tracking/RGB-T234/',
+#                                  experiment_name=experiment_name,
+#                                  subset='val')
+#
+#
+#     # remove sequences report dir and results dir:
+#     if os.path.exists(experiment_val.result_dir):
+#         shutil.rmtree(experiment_val.result_dir)
+#     if os.path.exists(experiment_val.report_dir):
+#         shutil.rmtree(experiment_val.report_dir)
+#
+#     experiment_val.run(tracker)
+#     performance = experiment_val.report([tracker.name], return_report=True)
+#
+#     wandb.log({"Success curve train": wandb.Histogram(performance[tracker.name]['overall']['succ_curve']),
+#                "AO train": performance[tracker.name]['overall']['ao'],
+#                "SR train": performance[tracker.name]['overall']['sr']},
+#               )
+#
+#
+#
+#     experiment_train = ExperimentRGBT('/home/zuern/datasets/thermal_tracking/RGB-T234/',
+#                                  experiment_name=experiment_name,
+#                                  subset='val')
+#
+#
+#     # remove sequences report dir and results dir:
+#     if os.path.exists(experiment_train.result_dir):
+#         shutil.rmtree(experiment_train.result_dir)
+#     if os.path.exists(experiment_train.report_dir):
+#         shutil.rmtree(experiment_train.report_dir)
+#
+#     experiment_train.run(tracker)
+#     performance = experiment_train.report([tracker.name], return_report=True)
+#
+#     wandb.log({"Success curve train": wandb.Histogram(performance[tracker.name]['overall']['succ_curve']),
+#                "AO train": performance[tracker.name]['overall']['ao'],
+#                "SR train": performance[tracker.name]['overall']['sr']},
+#               )
 
 
 def main():
@@ -75,11 +134,13 @@ def main():
 
 
     train_z_transforms = transforms.Compose([
+        RandomBlur(0.3),
         ToTensor()
     ])
 
     train_x_transforms = transforms.Compose([
-        ToTensor()
+        RandomBlur(0.3),
+        ToTensor(),
     ])
 
     val_z_transforms = transforms.Compose([
@@ -131,12 +192,10 @@ def main():
 
 
     train_closses, train_rlosses, train_tlosses = AverageMeter(), AverageMeter(), AverageMeter()
-    train_losses = AverageMeter()
     val_closses, val_rlosses, val_tlosses = AverageMeter(), AverageMeter(), AverageMeter()
-    val_losses = AverageMeter()
+
 
     train_val_plot = SavePlot(exp_name_dir, 'train_val_plot')
-
 
     for epoch in range(config.epoches):
 
@@ -149,24 +208,23 @@ def main():
 
             for i, dataset in enumerate(train_loader):
 
-                if args.model == 'SiamRPN':
+                closs, rloss, loss = model.step(epoch, dataset,anchors, i,  train=True)
+                closs_ = closs.cpu().item()
 
-                    closs, rloss, loss = model.step(epoch, dataset,anchors, i,  train=True)
-                    closs_ = closs.cpu().item()
+                if np.isnan(closs_):
+                   sys.exit(0)
 
-                    if np.isnan(closs_):
-                       sys.exit(0)
+                train_closses.update(closs.cpu().item())
+                train_rlosses.update(rloss.cpu().item())
+                train_tlosses.update(loss.cpu().item())
 
-                    train_closses.update(closs.cpu().item())
-                    train_rlosses.update(rloss.cpu().item())
-                    train_tlosses.update(loss.cpu().item())
+                progbar.set_postfix(closs='{:05.3f}'.format(train_closses.avg),
+                                    rloss='{:05.5f}'.format(train_rlosses.avg),
+                                    tloss='{:05.3f}'.format(train_tlosses.avg))
 
-                    progbar.set_postfix(closs='{:05.3f}'.format(train_closses.avg),
-                                        rloss='{:05.5f}'.format(train_rlosses.avg),
-                                        tloss='{:05.3f}'.format(train_tlosses.avg))
+                progbar.update()
+                train_loss.append(train_tlosses.avg)
 
-                    progbar.update()
-                    train_loss.append(train_tlosses.avg)
 
         print('saving model')
         model.save(model, exp_name_dir, epoch)
@@ -183,27 +241,25 @@ def main():
 
             for i, dataset in enumerate(val_loader):
 
-                if args.model == 'SiamRPN':
+                val_closs, val_rloss, val_tloss = model.step(epoch, dataset, anchors, train=False)
+                closs_ = val_closs.cpu().item()
 
-                    val_closs, val_rloss, val_tloss = model.step(epoch, dataset, anchors, train=False)
-                    closs_ = val_closs.cpu().item()
+                if np.isnan(closs_):
+                    sys.exit(0)
 
-                    if np.isnan(closs_):
-                        sys.exit(0)
+                val_closses.update(val_closs.cpu().item())
+                val_rlosses.update(val_rloss.cpu().item())
+                val_tlosses.update(val_tloss.cpu().item())
 
-                    val_closses.update(val_closs.cpu().item())
-                    val_rlosses.update(val_rloss.cpu().item())
-                    val_tlosses.update(val_tloss.cpu().item())
+                progbar.set_postfix(closs='{:05.3f}'.format(val_closses.avg),
+                                    rloss='{:05.5f}'.format(val_rlosses.avg),
+                                    tloss='{:05.3f}'.format(val_tlosses.avg))
+                progbar.update()
 
-                    progbar.set_postfix(closs='{:05.3f}'.format(val_closses.avg),
-                                        rloss='{:05.5f}'.format(val_rlosses.avg),
-                                        tloss='{:05.3f}'.format(val_tlosses.avg))
-                    progbar.update()
+                val_loss.append(val_tlosses.avg)
 
-                    val_loss.append(val_tlosses.avg)
-
-                    if i >= config.val_epoch_size - 1:
-                        break
+                if i >= config.val_epoch_size - 1:
+                    break
 
 
         val_loss = np.mean(val_loss)
@@ -214,24 +270,15 @@ def main():
         wandb.log({'Train loss': train_loss,
                    'Val loss': val_loss})
 
-        # # Get curves of training
-        # net_path = os.path.join('{}/model'.format(exp_name_dir), 'model_e%d.pth' % (epoch + 1))
-        # tracker = TrackerSiamRPNBIG(params, net_path)
-        #
-        # # remove sequences report dir and results dir:
-        # if os.path.exists(experiment.result_dir):
-        #     shutil.rmtree(experiment.result_dir)
-        # if os.path.exists(experiment.report_dir):
-        #     shutil.rmtree(experiment.report_dir)
-        #
-        # experiment.run(tracker)
-        # performance = experiment.report([tracker.name])
-        #
-        # wandb.log({"Success_curve": wandb.Histogram(performance[tracker.name]['overall']['succ_curve']),
-        #            "AO": performance[tracker.name]['overall']['ao'],
-        #            "SR": performance[tracker.name]['overall']['sr'],
-        #            "FPS": performance[tracker.name]['overall']['speed_fps']},
-        #           )
+
+
+        model_save_dir_pth = '{}/model'.format(exp_name_dir)
+        if not os.path.exists(model_save_dir_pth):
+                os.makedirs(model_save_dir_pth)
+        net_path = os.path.join(model_save_dir_pth, 'model_e%d.pth' % (epoch + 1))
+
+
+        # plot_curves(args.modality, net_path)
 
 
 if __name__ == '__main__':
