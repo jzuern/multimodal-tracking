@@ -1,0 +1,12 @@
+seq_dataset 234
+seq_dataset_val 234
+Train epoch 1/200
+  0% 0/1000 [00:00<?, ?it/s]  0% 0/1000 [00:06<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/zuern/SiamRPN-PyTorch/train/train.py", line 277, in <module>
+    main()
+  File "/home/zuern/SiamRPN-PyTorch/train/train.py", line 214, in main
+    closs, rloss, loss = model.step(epoch, dataset,anchors, i,  train=True)
+  File "/home/zuern/SiamRPN-PyTorch/train/net.py", line 50, in step
+    template_rgb, detection_rgb, template_ir, detection_ir, regression_target, conf_target = dataset
+ValueError: not enough values to unpack (expected 6, got 4)

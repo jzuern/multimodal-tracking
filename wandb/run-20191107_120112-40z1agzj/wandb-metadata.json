@@ -1,0 +1,32 @@
+{
+    "state": "running",
+    "program": "/home/zuern/SiamRPN-PyTorch/train/train.py",
+    "os": "Linux-4.4.0-164-generic-x86_64-with-Ubuntu-16.04-xenial",
+    "args": [
+        "--modality",
+        "1",
+        "--experiment_name",
+        "SiamRPN_RGB",
+        "--dataset",
+        "VID"
+    ],
+    "gpu_count": 4,
+    "username": "zuern",
+    "host": "hpcgpu4",
+    "python": "3.5.2",
+    "email": "zuern@informatik.uni-freiburg.de",
+    "git": {
+        "remote": "https://github.com/jzuern/multimodal-tracking.git",
+        "commit": "8b585cf92e9577a3e04f443c4d707ab3344ac8c5"
+    },
+    "startedAt": "2019-11-07T12:01:12.243483",
+    "cuda": "10.0.130",
+    "root": "/home/zuern/SiamRPN-PyTorch",
+    "mode": "run",
+    "jobType": null,
+    "project": "SiameseRPN",
+    "gpu": "TITAN X (Pascal)",
+    "cpu_count": 16,
+    "heartbeatAt": "2019-11-07T12:04:26.129115",
+    "executable": "/usr/bin/python3.5"
+}

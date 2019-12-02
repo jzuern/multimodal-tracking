@@ -7,10 +7,14 @@ import numpy as np
 from tqdm import tqdm
 from config import config
 from data_rgbt import TrainDataLoaderRGBT
+from data import TrainDataLoader
 from torch.utils.data import DataLoader
-from util import util, AverageMeter, SavePlot
-from got10k.datasets import ImageNetVID, GOT10k
-from torchvision import datasets, transforms
+from util import util, AverageMeter
+
+# from got10k.datasets import ImageNetVID, GOT10k
+from got10kcustom.datasets.got10k import GOT10k
+
+from torchvision import  transforms
 from custom_transforms import Normalize, ToTensor, RandomStretch, RandomCrop, CenterCrop, RandomBlur, ColorAug
 from experimentrgbt import RGBTSequence
 import net
@@ -20,17 +24,19 @@ import wandb
 torch.manual_seed(1234) # config.seed
 
 
-parser = argparse.ArgumentParser(description='PyTorch SiameseRPN Training')
-parser.add_argument('--experiment_name', default='SiamRPN', metavar='DIR',help='path to weight')
+parser = argparse.ArgumentParser(description='PyTorch SiameseRPN')
+
+parser.add_argument('--experiment_name', default='SiamRPN', metavar='DIR')
 parser.add_argument('--checkpoint_path', default=None, help='resume')
 parser.add_argument('--modality', default=None, type=int, help='how many modalities', choices=[1, 2])
+parser.add_argument('--dataset', default=None, type=str, help='which dataset', choices=['GOT-10k', 'RGBT-234', 'VID'])
 
 def main():
 
     '''parameter initialization'''
     args = parser.parse_args()
-    exp_name_dir = util.experiment_name_dir(args.experiment_name)
 
+    exp_name_dir = util.experiment_name_dir(args)
 
     wandb.init(project="SiameseRPN", reinit=True)
     wandb.config.update(args)  # adds all of the arguments as config variables
@@ -38,31 +44,6 @@ def main():
 
     '''model on gpu'''
     model = net.TrackerSiamRPN(modality=args.modality)
-
-    name = 'RGBT-234'
-
-    assert name in ['VID', 'GOT-10k', 'All', 'RGBT-234']
-
-    if name == 'GOT-10k':
-        root_dir = '/home/zuern/datasets/tracking/GOT10k'
-        seq_dataset = GOT10k(root_dir, subset='train')
-        seq_dataset_val = GOT10k(root_dir, subset='val')
-
-    elif name == 'VID':
-        root_dir = '/home/zuern/datasets/tracking/VID/ILSVRC'
-        seq_dataset = ImageNetVID(root_dir, subset=('train'))
-        seq_dataset_val = ImageNetVID(root_dir, subset=('val'))
-
-    elif name == 'RGBT-234':
-        seq_dataset = RGBTSequence('/home/zuern/datasets/thermal_tracking/RGB-T234/', subset='train')
-        seq_dataset_val = RGBTSequence('/home/zuern/datasets/thermal_tracking/RGB-T234/', subset='val')
-    else:
-        raise ValueError('Dataset not defined')
-
-
-    print('seq_dataset', len(seq_dataset))
-    print('seq_dataset_val', len(seq_dataset_val))
-
 
     train_z_transforms = transforms.Compose([
         RandomBlur(0.3),
@@ -81,22 +62,117 @@ def main():
         ToTensor()
     ])
 
-    train_data  = TrainDataLoaderRGBT(seq_dataset, train_z_transforms, train_x_transforms, name)
-    anchors = train_data.anchors
 
-    train_loader = DataLoader(  dataset    = train_data,
-                                batch_size = config.train_batch_size,
-                                shuffle    = True,
-                                num_workers= config.train_num_workers,
-                                pin_memory = True)
+    assert args.dataset in ['VID', 'GOT-10k', 'All', 'RGBT-234']
 
-    val_data  = TrainDataLoaderRGBT(seq_dataset_val, val_z_transforms, val_x_transforms, name)
+    if args.dataset == 'GOT-10k':
+        root_dir = '/home/zuern/datasets/tracking/GOT10k'
 
-    val_loader = DataLoader(    dataset    = val_data,
-                                batch_size = config.valid_batch_size,
-                                shuffle    = False,
-                                num_workers= config.valid_num_workers,
-                                pin_memory = True)
+
+        seq_dataset = GOT10k(root_dir, subset='train')
+        seq_dataset_val = GOT10k(root_dir, subset='val')
+
+        train_data = TrainDataLoader(seq_dataset, train_z_transforms, train_x_transforms, args.dataset)
+        anchors = train_data.anchors
+
+        train_loader = DataLoader(dataset=train_data,
+                                  batch_size=config.train_batch_size,
+                                  shuffle=True,
+                                  num_workers=config.train_num_workers,
+                                  pin_memory=True)
+
+        val_data = TrainDataLoader(seq_dataset_val, val_z_transforms, val_x_transforms, args.dataset)
+
+        val_loader = DataLoader(dataset=val_data,
+                                batch_size=config.valid_batch_size,
+                                shuffle=False,
+                                num_workers=config.valid_num_workers,
+                                pin_memory=True)
+
+    elif args.dataset == 'VID':
+
+        root_dir = '/home/zuern/datasets/tracking/VID/ILSVRC2015'
+
+        seq_dataset = ImageNetVID(root_dir,
+                                  subset=('train'),
+                                  cache_dir=root_dir+'/cache')
+
+        seq_dataset_val = ImageNetVID(root_dir,
+                                      subset=('val'),
+                                      cache_dir=root_dir+'/cache')
+
+        train_data = TrainDataLoader(seq_dataset, train_z_transforms, train_x_transforms, args.dataset)
+        anchors = train_data.anchors
+
+        train_loader = DataLoader(dataset=train_data,
+                                  batch_size=config.train_batch_size,
+                                  shuffle=True,
+                                  num_workers=config.train_num_workers,
+                                  pin_memory=True)
+
+        val_data = TrainDataLoader(seq_dataset_val, val_z_transforms, val_x_transforms, args.dataset)
+
+        val_loader = DataLoader(dataset=val_data,
+                                batch_size=config.valid_batch_size,
+                                shuffle=False,
+                                num_workers=config.valid_num_workers,
+                                pin_memory=True)
+
+
+    elif args.dataset == 'RGBT-234':
+
+        root_dir = '/home/zuern/datasets/thermal_tracking/RGB-T234'
+
+        seq_dataset = GOT10k(root_dir, subset='train_i')
+        seq_dataset_val = GOT10k(root_dir, subset='train_i')
+
+        train_data = TrainDataLoader(seq_dataset, train_z_transforms, train_x_transforms, args.dataset)
+        anchors = train_data.anchors
+        train_loader = DataLoader(dataset=train_data,
+                                  batch_size=config.train_batch_size,
+                                  shuffle=True,
+                                  num_workers=config.train_num_workers,
+                                  pin_memory=True)
+
+
+        val_data = TrainDataLoader(seq_dataset_val, val_z_transforms, val_x_transforms, args.dataset)
+        val_loader = DataLoader(dataset=val_data,
+                                batch_size=config.valid_batch_size,
+                                shuffle=False,
+                                num_workers=config.valid_num_workers,
+                                pin_memory=True)
+
+
+
+
+        # seq_dataset = RGBTSequence('/home/zuern/datasets/thermal_tracking/RGB-T234/', subset='train')
+        # seq_dataset_val = RGBTSequence('/home/zuern/datasets/thermal_tracking/RGB-T234/', subset='val')
+        #
+        # train_data = TrainDataLoaderRGBT(seq_dataset, train_z_transforms, train_x_transforms, args.dataset)
+        # anchors = train_data.anchors
+        #
+        # train_loader = DataLoader(dataset=train_data,
+        #                           batch_size=config.train_batch_size,
+        #                           shuffle=True,
+        #                           num_workers=config.train_num_workers,
+        #                           pin_memory=True)
+        #
+        # val_data = TrainDataLoaderRGBT(seq_dataset_val, val_z_transforms, val_x_transforms, args.dataset)
+        #
+        # val_loader = DataLoader(dataset=val_data,
+        #                         batch_size=config.valid_batch_size,
+        #                         shuffle=False,
+        #                         num_workers=config.valid_num_workers,
+        #                         pin_memory=True)
+
+
+    else:
+        raise ValueError('Dataset not defined')
+
+
+    print('seq_dataset', len(seq_dataset))
+    print('seq_dataset_val', len(seq_dataset_val))
+
 
 
     '''load weights'''
@@ -113,19 +189,16 @@ def main():
 
     elif config.pretrained_model:
         checkpoint = torch.load(config.pretrained_model)
-        # change name and load parameters
+
         checkpoint = {k.replace('features.features', 'featureExtract'): v for k, v in checkpoint.items()}
         model_dict = model.net.state_dict()
         model_dict.update(checkpoint)
         model.net.load_state_dict(model_dict)
 
 
-
     train_closses, train_rlosses, train_tlosses = AverageMeter(), AverageMeter(), AverageMeter()
     val_closses, val_rlosses, val_tlosses = AverageMeter(), AverageMeter(), AverageMeter()
 
-
-    train_val_plot = SavePlot(exp_name_dir, 'train_val_plot')
 
     for epoch in range(config.epoches):
 
@@ -193,7 +266,6 @@ def main():
 
 
         val_loss = np.mean(val_loss)
-        train_val_plot.update(train_loss, val_loss)
 
         print ('Train loss: {}, val loss: {}'.format(train_loss, val_loss))
 

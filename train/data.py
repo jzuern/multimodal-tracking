@@ -11,9 +11,9 @@ from util import util
 from PIL import Image
 from config import config
 from torch.utils.data import Dataset
-from got10k.datasets import ImageNetVID, GOT10k
 from torchvision import datasets, transforms, utils
-from got10k.datasets import ImageNetVID, GOT10k
+from got10k_custom.datasets import GOT10k
+
 from custom_transforms import Normalize, ToTensor, RandomStretch, \
     RandomCrop, CenterCrop, RandomBlur, ColorAug
 
@@ -50,13 +50,11 @@ class TrainDataLoader(Dataset):
                 self.max_inter = video_num//2
 
             template_index = np.clip(random.choice(range(0, max(1, video_num - self.max_inter))), 0, video_num-1)
-
             detection_index= np.clip(random.choice(range(1, max(2, self.max_inter))) + template_index, 0, video_num-1)
 
             template_img_path, detection_img_path  = video_name[template_index], video_name[detection_index]
 
             template_gt  = video_gt[template_index]
-
             detection_gt = video_gt[detection_index]
 
             if template_gt[2]*template_gt[3]*detection_gt[2]*detection_gt[3] != 0:
@@ -105,15 +103,9 @@ class TrainDataLoader(Dataset):
                                                                         config.template_img_size,
                                                                         config.context, img_mean )
 
-        size_x = config.template_img_size
-        x1, y1 = int((size_x + 1) / 2 - w_x / 2), int((size_x + 1) / 2 - h_x / 2)
-        x2, y2 = int((size_x + 1) / 2 + w_x / 2), int((size_x + 1) / 2 + h_x / 2)
-
-
         self.ret['exemplar_img'] = exemplar_img
 
         '''detection'''
-        #detection_img = cv2.imread(self.ret['detection_img_path'])
         d = self.ret['detection_target_xywh']
         cx, cy, w, h = d  # float type
 
@@ -142,18 +134,11 @@ class TrainDataLoader(Dataset):
         x1, y1 = int((size_x + 1) / 2 - w_x / 2), int((size_x + 1) / 2 - h_x / 2)
         x2, y2 = int((size_x + 1) / 2 + w_x / 2), int((size_x + 1) / 2 + h_x / 2)
 
-        #frame_d = cv2.rectangle(instance_img, (int(x1+(a_x*scale_x)),int(y1+(b_y*scale_x))), (int(x2+(a_x*scale_x)),int(y2+(b_y*scale_x))), (0, 255, 0), 1)
-        #cv2.imwrite('detection_img_ori.png',frame_d)
 
         w  = x2 - x1
         h  = y2 - y1
-        cx = x1 + w/2
-        cy = y1 + h/2
-
-        #print('[a_x_, b_y_, w, h]', [int(a_x_), int(b_y_), w, h])
 
         self.ret['instance_img'] = instance_img
-        #self.ret['cx, cy, w, h'] = [int(a_x_*0.16), int(b_y_*0.16), w, h]
         self.ret['cx, cy, w, h'] = [int(a_x_), int(b_y_), w, h]
 
     def get_exemplar_image(self, img, bbox, size_z, context_amount, img_mean=None):
@@ -175,30 +160,19 @@ class TrainDataLoader(Dataset):
 
         cx, cy, w, h = bbox  # float type
 
-        #cx, cy = cx - a_x , cy - b_y
         wc_z = w + context_amount * (w + h)
         hc_z = h + context_amount * (w + h)
         s_z = np.sqrt(wc_z * hc_z) # the width of the crop box
-
-        scale_z = size_z / s_z
 
         s_x = s_z * size_x / size_z
         instance_img, gt_w, gt_h, scale_x, scale_h, scale_w = self.crop_and_pad(img, cx, cy, w, h, a_x, b_y,  size_x, s_x, img_mean)
         w_x = gt_w #* scale_x #w * scale_x
         h_x = gt_h #* scale_x #h * scale_x
 
-        #cx, cy = cx/ scale_w *scale_x, cy/ scale_h *scale_x
-        #cx, cy = cx/ scale_w, cy/ scale_h
         a_x, b_y = a_x*scale_w, b_y*scale_h
-        x1, y1 = int((size_x + 1) / 2 - w_x / 2), int((size_x + 1) / 2 - h_x / 2)
-        x2, y2 = int((size_x + 1) / 2 + w_x / 2), int((size_x + 1) / 2 + h_x / 2)
-        '''frame = cv2.rectangle(instance_img, (   int(x1+(a_x*scale_x)),
-                                                int(y1+(b_y*scale_x))),
-                                                (int(x2+(a_x*scale_x)),
-                                                int(y2+(b_y*scale_x))),
-                                                (0, 255, 0), 1)'''
-        #cv2.imwrite('1.jpg', frame)
+
         return instance_img, a_x, b_y, w_x, h_x, scale_x
+
 
     def crop_and_pad(self, img, cx, cy, gt_w, gt_h, a_x, b_y, model_sz, original_sz, img_mean=None):
 
@@ -213,8 +187,6 @@ class TrainDataLoader(Dataset):
 
         ymin = (cy-b_y) - ((original_sz - 1) / 2)* scale_h
         ymax = (cy-b_y) + ((original_sz - 1) / 2)* scale_h
-
-        #print('xmin, xmax, ymin, ymax', xmin, xmax, ymin, ymax)
 
         left   = int(self.round_up(max(0., -xmin)))
         top    = int(self.round_up(max(0., -ymin)))
@@ -231,11 +203,8 @@ class TrainDataLoader(Dataset):
             te_im_ = np.zeros((int((r + top + bottom)), int((c + left + right)), k), np.uint8)  # 0 is better than 1 initialization
             te_im = np.zeros((int((r + top + bottom)), int((c + left + right)), k), np.uint8)  # 0 is better than 1 initialization
 
-            #cv2.imwrite('te_im1.jpg', te_im)
             te_im[:, :, :] = img_mean
-            #cv2.imwrite('te_im2_1.jpg', te_im)
             te_im[top:top + r, left:left + c, :] = img
-            #cv2.imwrite('te_im2.jpg', te_im)
 
             if top:
                 te_im[0:top, left:left + c, :] = img_mean
@@ -248,12 +217,9 @@ class TrainDataLoader(Dataset):
 
             im_patch_original = te_im[int(ymin):int(ymax + 1), int(xmin):int(xmax + 1), :]
 
-            #cv2.imwrite('te_im3.jpg',   im_patch_original)
-
         else:
             im_patch_original = img[int(ymin):int((ymax) + 1), int(xmin):int((xmax) + 1), :]
 
-            #cv2.imwrite('te_im4.jpg', im_patch_original)
 
         if not np.array_equal(model_sz, original_sz):
 
@@ -279,19 +245,12 @@ class TrainDataLoader(Dataset):
             gt_w = gt_w * scale
             gt_h = gt_h * scale
 
-            #im_patch = cv2.resize(im_patch_original_, (shape))  # zzp: use cv to get a better speed
-            #cv2.imwrite('te_im8.jpg', im_patch)
-
             im_patch = cv2.resize(im_patch_original, (model_sz, model_sz))  # zzp: use cv to get a better speed
-            #cv2.imwrite('te_im9.jpg', im_patch)
-
 
         else:
             im_patch = im_patch_original
-        #scale = model_sz / im_patch_original.shape[0]
+
         return im_patch, gt_w, gt_h, scale, scale_h_, scale_w_
-
-
 
 
     def crop_and_pad_old(self, img, cx, cy, model_sz, original_sz, img_mean=None):
@@ -311,7 +270,9 @@ class TrainDataLoader(Dataset):
         xmax = int(self.round_up(xmax + left))
         ymin = int(self.round_up(ymin + top))
         ymax = int(self.round_up(ymax + top))
+
         r, c, k = img.shape
+
         if any([top, bottom, left, right]):
             te_im = np.zeros((r + top + bottom, c + left + right, k), np.uint8)  # 0 is better than 1 initialization
             te_im[top:top + r, left:left + c, :] = img
@@ -345,7 +306,6 @@ class TrainDataLoader(Dataset):
         return regression_target, conf_target
 
     def compute_target(self, anchors, box):
-        #box = [-(box[0]), -(box[1]), box[2], box[3]]
         regression_target = self.box_transform(anchors, box)
 
         iou = self.compute_iou(anchors, box).flatten()
@@ -361,9 +321,6 @@ class TrainDataLoader(Dataset):
             if i % 40 == 0:
                 label[neg_ind] = 0'''
 
-
-
-        #max_index = np.argsort(iou.flatten())[-20:]
 
         return regression_target, label
 
@@ -420,34 +377,20 @@ class TrainDataLoader(Dataset):
         self.ret['train_z_transforms'] = self.z_transforms(self.ret['exemplar_img'])
 
     def __getitem__(self, index):
+
+
         index = random.choice(range(len(self.sub_class_dir)))
-        '''if len(self.sub_class_dir) > 180:
-            index = self.index
-            self.index += 1
-
-            if self.index >= 8000:
-                self.index = 3000
-
-            index = random.choice(range(3000, 8000))
-
-            if index in self.index:
-                index = random.choice(range(3000, 8000))
-                print("index in self.index")
-
-            if not index in self.index:
-                self.index.append(index)
-            if len(self.index) >= 3000:
-                self.index = []
-        else:
-            index = random.choice(range(len(self.sub_class_dir)))'''
 
         if self.name == 'GOT-10k':
             if index == 4418 or index == 8627 or index == 8629 or index == 9057 or index == 9058:
                 index += 3
+
         self._pick_img_pairs(index)
         self.open()
+
         self._tranform()
         regression_target, conf_target = self._target()
+
         self.count += 1
 
         return self.ret['train_z_transforms'], self.ret['train_x_transforms'], regression_target, conf_target.astype(np.int64)

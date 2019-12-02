@@ -9,7 +9,7 @@ from config import config
 from torch.utils.data import Dataset
 import glob
 
-from got10k.datasets import ImageNetVID, GOT10k
+# from got10k.datasets import ImageNetVID, GOT10k
 
 class TrainDataLoaderRGBT(Dataset):
     def __init__(self, seq_dataset, z_transforms, x_transforms, name = 'RGBT-234'):
@@ -119,10 +119,8 @@ class TrainDataLoaderRGBT(Dataset):
         detection_img_rgb = detection_img_rgb / 255.
         detection_img_ir = detection_img_ir / 255.
 
-
         img_rgb_mean = np.mean(template_img_rgb, axis=(0, 1))
         img_ir_mean = np.mean(template_img_ir, axis=(0, 1))
-
 
         exemplar_img_rgb, scale_z, s_z, w_x, h_x = self.get_exemplar_image( template_img_rgb,
                                                                         self.ret['template_target_xywh'],

@@ -5,16 +5,21 @@ from train.experimentrgbt import ExperimentRGBT
 
 if __name__ == '__main__':
 
+    experiment_dir = 'experiments/SiamRPN_RGBT-234_1'
+
 
     # If modality==1: use only RGB. If modality==2: RGB+IR
     modality = 1
 
     if modality == 1:
-        net_path = 'train/experiments/SiamRPN_RGB/model/model_e4.pth'
-        experiment_name = 'RGB'
+        net_path = '/home/zuern/siamRPN/train/experiments/default/model/model_e26.pth'
+        # net_path = '/home/zuern/siamRPN/train/experiments/default/model/model_e1.pth'
+        # net_path = experiment_dir + '/model/model_e1.pth'
+        experiment_name = 'exp'
     else:
-        net_path = 'train/experiments/SiamRPN_RGBIR/model/model_e1.pth'
-        experiment_name = 'RGBIR'
+        net_path = experiment_dir + '/model/model_e1.pth'
+        experiment_name = 'exp'
+
 
 
     tracker = TrackerSiamRPNEval(modality=modality,
@@ -22,7 +27,8 @@ if __name__ == '__main__':
 
     experiments = ExperimentRGBT('/home/zuern/datasets/thermal_tracking/RGB-T234/',
                        experiment_name=experiment_name,
-                       subset='val')
+                       experiment_dir=experiment_dir,
+                       subset='train_small')
 
     '''run experiments'''
     experiments.run(tracker, visualize=False)

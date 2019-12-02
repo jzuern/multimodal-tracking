@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/zuern/SiamRPN-PyTorch/train/train.py", line 277, in <module>
+    main()
+  File "/home/zuern/SiamRPN-PyTorch/train/train.py", line 126, in main
+    seq_dataset = GOT10k(root_dir, subset='train_i')
+  File "/home/zuern/.local/lib/python3.5/site-packages/got10k/datasets/got10k.py", line 27, in __init__
+    assert subset in ['train', 'val', 'test'], 'Unknown subset.'
+AssertionError: Unknown subset.

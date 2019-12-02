@@ -34,6 +34,9 @@ class RGBTSequence():
             sequence_list = sequence_list[0:split_idx]
         elif subset == 'train':
             sequence_list = sequence_list[split_idx:]
+        elif subset == 'train_small':
+            sequence_list = sequence_list[split_idx:split_idx+20]
+
 
         for sequence in sequence_list:
             self.anno_files.append(sequence + '/visible.txt')
@@ -89,15 +92,16 @@ class ExperimentRGBT(object):
             evaluation results. Default is ``./reports``.
     """
 
-    def __init__(self, root_dir, experiment_name, subset='val', list_file=None,
+    def __init__(self, root_dir, experiment_name, experiment_dir, subset='val', list_file=None,
                  result_dir='results', report_dir='reports'):
+
         super(ExperimentRGBT, self).__init__()
 
         self.subset = subset
         self.dataset = RGBTSequence( root_dir, subset=subset)
 
-        self.result_dir = os.path.join(result_dir, 'RGBT')
-        self.report_dir = os.path.join(report_dir, 'RGBT')
+        self.result_dir = experiment_dir
+        self.report_dir = experiment_dir
 
         self.nbins_iou = 101
         self.nbins_ce = 101
@@ -135,20 +139,15 @@ class ExperimentRGBT(object):
 
                 # skip if results exist
                 record_file = os.path.join(
-                    self.result_dir, self.experiment_name, tracker.name, seq_name,
-                    '%s_%03d.txt' % (seq_name, r + 1))
+                    self.result_dir, self.experiment_name, '%s_%03d.txt' % (seq_name, r + 1))
 
                 if os.path.exists(record_file):
                     print('  Found results, skipping', seq_name)
                     continue
 
 
-
-
                 # tracking loop
                 boxes, times = tracker.track(img_rgb_files, img_ir_files, anno[0, :], visualize=visualize)
-
-
 
 
                 # record results
@@ -157,15 +156,16 @@ class ExperimentRGBT(object):
 
 
     def report(self, tracker_names, return_report=False):
+
         assert isinstance(tracker_names, (list, tuple))
 
-        if self.subset == 'val':
+        if self.subset == 'val' or True:
 
             # meta information is useful when evaluation
             self.dataset.return_meta = True
 
             # assume tracker_names[0] is your tracker
-            report_dir = os.path.join(self.report_dir, self.experiment_name, tracker_names[0])
+            report_dir = os.path.join(self.report_dir, self.experiment_name)
 
             if not os.path.exists(report_dir):
                 os.makedirs(report_dir)
@@ -174,7 +174,7 @@ class ExperimentRGBT(object):
 
             # visible ratios of all sequences
             seq_names = self.dataset.seq_names
-            # covers = {s: self.dataset[s][2]['cover'][1:] for s in seq_names}
+
             covers = {s: 8 for s in seq_names}
 
             performance = {}
@@ -195,8 +195,7 @@ class ExperimentRGBT(object):
 
                     seq_name = self.dataset.seq_names[s]
                     record_files = glob.glob(os.path.join(
-                        self.result_dir, self.experiment_name, name, seq_name,
-                        '%s_[0-9]*.txt' % seq_name))
+                        self.result_dir, self.experiment_name, '%s_[0-9]*.txt' % seq_name))
 
                     print('Evaluating {}'.format(seq_name))
 
@@ -224,8 +223,7 @@ class ExperimentRGBT(object):
                     # stack all tracking times
                     times[seq_name] = []
                     time_file = os.path.join(
-                        self.result_dir, self.experiment_name, name, seq_name,
-                        '%s_time.txt' % seq_name)
+                        self.result_dir, self.experiment_name, '%s_time.txt' % seq_name)
 
                     if os.path.exists(time_file):
                         seq_times = np.loadtxt(time_file, delimiter=',')
@@ -376,7 +374,7 @@ class ExperimentRGBT(object):
             'but got %s instead' % type(report_files)
 
         # assume tracker_names[0] is your tracker
-        report_dir = os.path.join(self.report_dir, self.experiment_name, tracker_names[0])
+        report_dir = os.path.join(self.report_dir, self.experiment_name)
         if not os.path.exists(report_dir):
             os.makedirs(report_dir)
 

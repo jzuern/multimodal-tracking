@@ -107,12 +107,12 @@ class Util(object):
             else:
                 raise KeyError('error in fixing former 3 layers')
 
-    def experiment_name_dir(self, experiment_name):
-        experiment_name_dir = 'experiments/{}'.format(experiment_name)
-        if experiment_name == 'default':
-            print('You are using "default" experiment, my advice to you is: Copy "default" change folder name and change settings in file "parameters.json"')
-        else:
-            print('You are using "{}" experiment'.format(experiment_name))
+    def experiment_name_dir(self, args):
+
+
+        experiment_name_dir = 'experiments/{}_{}_{}'.format(args.experiment_name, args.dataset, args.modality)
+        print('You are using "{}" experiment'.format(experiment_name_dir))
+
         return experiment_name_dir
 
     def adjust_learning_rate(self, optimizer, decay=0.1):

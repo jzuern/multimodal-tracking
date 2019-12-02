@@ -1,0 +1,1979 @@
+diff --git a/.idea/SiamRPN-PyTorch.iml b/.idea/SiamRPN-PyTorch.iml
+deleted file mode 100644
+index 6711606..0000000
+--- a/.idea/SiamRPN-PyTorch.iml
++++ /dev/null
+@@ -1,11 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module type="PYTHON_MODULE" version="4">
+-  <component name="NewModuleRootManager">
+-    <content url="file://$MODULE_DIR$" />
+-    <orderEntry type="inheritedJdk" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-  </component>
+-  <component name="TestRunnerService">
+-    <option name="PROJECT_TEST_RUNNER" value="Unittests" />
+-  </component>
+-</module>
+\ No newline at end of file
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+deleted file mode 100644
+index 15a15b2..0000000
+--- a/.idea/encodings.xml
++++ /dev/null
+@@ -1,4 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="Encoding" addBOMForNewFiles="with NO BOM" />
+-</project>
+\ No newline at end of file
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+deleted file mode 100644
+index 6c993b7..0000000
+--- a/.idea/misc.xml
++++ /dev/null
+@@ -1,4 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.5" project-jdk-type="Python SDK" />
+-</project>
+\ No newline at end of file
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+deleted file mode 100644
+index 2c6ce80..0000000
+--- a/.idea/modules.xml
++++ /dev/null
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectModuleManager">
+-    <modules>
+-      <module fileurl="file://$PROJECT_DIR$/.idea/SiamRPN-PyTorch.iml" filepath="$PROJECT_DIR$/.idea/SiamRPN-PyTorch.iml" />
+-    </modules>
+-  </component>
+-</project>
+\ No newline at end of file
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+deleted file mode 100644
+index 94a25f7..0000000
+--- a/.idea/vcs.xml
++++ /dev/null
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="VcsDirectoryMappings">
+-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+-  </component>
+-</project>
+\ No newline at end of file
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+deleted file mode 100644
+index 3ab3d13..0000000
+--- a/.idea/workspace.xml
++++ /dev/null
+@@ -1,708 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ChangeListManager">
+-    <list default="true" id="3c26d431-2fbc-4e13-8f9b-affc3b8083c3" name="Default Changelist" comment="">
+-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/tracking/reports/RGBT/RGB/SiamRPN/performance.json" beforeDir="false" afterPath="$PROJECT_DIR$/tracking/reports/RGBT/RGB/SiamRPN/performance.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/tracking/run_tracking.py" beforeDir="false" afterPath="$PROJECT_DIR$/tracking/run_tracking.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/train/data_rgbt.py" beforeDir="false" afterPath="$PROJECT_DIR$/train/data_rgbt.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/train/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/train/net.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/train/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train/train.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/train/wandb/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/train/wandb/debug.log" afterDir="false" />
+-    </list>
+-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+-    <option name="SHOW_DIALOG" value="false" />
+-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+-    <option name="LAST_RESOLUTION" value="IGNORE" />
+-  </component>
+-  <component name="FileEditorManager">
+-    <leaf>
+-      <file pinned="false" current-in-tab="true">
+-        <entry file="file://$PROJECT_DIR$/train/train.py">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="340">
+-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-      <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/tracking/run_tracking.py">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="238">
+-              <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+-              <folding>
+-                <element signature="e#0#38#0" expanded="true" />
+-              </folding>
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-      <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/train/data_rgbt.py">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="34">
+-              <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-      <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/train/net.py">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="-499">
+-              <caret line="186" column="25" lean-forward="true" selection-start-line="186" selection-start-column="25" selection-end-line="186" selection-end-column="25" />
+-              <folding>
+-                <element signature="e#0#9#0" expanded="true" />
+-              </folding>
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-      <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/tracking/SiamRPNEval.py">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="102">
+-              <caret line="125" column="18" lean-forward="true" selection-start-line="125" selection-start-column="18" selection-end-line="125" selection-end-column="18" />
+-              <folding>
+-                <element signature="e#0#10#0" expanded="true" />
+-                <element signature="e#818#3658#0" />
+-              </folding>
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-      <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/tracking/network.py">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="68">
+-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-    </leaf>
+-  </component>
+-  <component name="FileTemplateManagerImpl">
+-    <option name="RECENT_TEMPLATES">
+-      <list>
+-        <option value="Python Script" />
+-      </list>
+-    </option>
+-  </component>
+-  <component name="FindInProjectRecents">
+-    <findStrings>
+-      <find>class SiamRp</find>
+-      <find>rgbtda</find>
+-      <find>totens</find>
+-      <find>tracker_pat</find>
+-      <find>SiameseAlexNet</find>
+-      <find>reports</find>
+-      <find>report</find>
+-      <find>TrackerSiamFC</find>
+-      <find>self.cfg</find>
+-      <find>def step</find>
+-      <find>loader</find>
+-      <find>wandb.image</find>
+-      <find>19</find>
+-      <find>exemplar_img</find>
+-      <find>get_instance_image</find>
+-      <find>generate_anc</find>
+-      <find>.init(</find>
+-      <find>init</find>
+-      <find>crop_and</find>
+-      <find>track_init</find>
+-      <find>self.bbox =</find>
+-      <find>args</find>
+-      <find>if visua</find>
+-      <find>/ 255</find>
+-      <find>updating tr</find>
+-      <find>def track</find>
+-      <find>TrackerSiamRPNEval</find>
+-      <find>self.experiment_name</find>
+-      <find>custom</find>
+-      <find>TrackerSiamRPN</find>
+-    </findStrings>
+-  </component>
+-  <component name="Git.Settings">
+-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-  </component>
+-  <component name="IdeDocumentHistory">
+-    <option name="CHANGED_PATHS">
+-      <list>
+-        <option value="$PROJECT_DIR$/train/config.py" />
+-        <option value="$PROJECT_DIR$/tracking/rgbtdataset.py" />
+-        <option value="$PROJECT_DIR$/train/network_siamfc.py" />
+-        <option value="$PROJECT_DIR$/train/rgbtdataset.py" />
+-        <option value="$PROJECT_DIR$/tracking/siamRPNBIG.py" />
+-        <option value="$PROJECT_DIR$/train/train_siamfc.py" />
+-        <option value="$PROJECT_DIR$/train/train_siamrpn.py" />
+-        <option value="$PROJECT_DIR$/train/data.py" />
+-        <option value="$PROJECT_DIR$/tracking/custom_transforms.py" />
+-        <option value="$PROJECT_DIR$/train/experimentrgbt.py" />
+-        <option value="$PROJECT_DIR$/tracking/data_loader.py" />
+-        <option value="$PROJECT_DIR$/train/custom_transforms.py" />
+-        <option value="$PROJECT_DIR$/util/__init__.py" />
+-        <option value="$PROJECT_DIR$/tracking/network.py" />
+-        <option value="$PROJECT_DIR$/tracking/SiamRPNEval.py" />
+-        <option value="$PROJECT_DIR$/README.md" />
+-        <option value="$PROJECT_DIR$/tracking/run_tracking.py" />
+-        <option value="$PROJECT_DIR$/train/data_rgbt.py" />
+-        <option value="$PROJECT_DIR$/train/__init__.py" />
+-        <option value="$PROJECT_DIR$/train/net.py" />
+-        <option value="$PROJECT_DIR$/train/train.py" />
+-      </list>
+-    </option>
+-  </component>
+-  <component name="ProjectFrameBounds" extendedState="6">
+-    <option name="x" value="1983" />
+-    <option name="y" value="286" />
+-    <option name="width" value="1857" />
+-    <option name="height" value="1202" />
+-  </component>
+-  <component name="ProjectView">
+-    <navigator proportions="" version="1">
+-      <foldersAlwaysOnTop value="true" />
+-    </navigator>
+-    <panes>
+-      <pane id="ProjectPane">
+-        <subPane>
+-          <expand>
+-            <path>
+-              <item name="SiamRPN-PyTorch" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="SiamRPN-PyTorch" type="462c0819:PsiDirectoryNode" />
+-            </path>
+-            <path>
+-              <item name="SiamRPN-PyTorch" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="SiamRPN-PyTorch" type="462c0819:PsiDirectoryNode" />
+-              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+-            </path>
+-            <path>
+-              <item name="SiamRPN-PyTorch" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="SiamRPN-PyTorch" type="462c0819:PsiDirectoryNode" />
+-              <item name="train" type="462c0819:PsiDirectoryNode" />
+-            </path>
+-          </expand>
+-          <select />
+-        </subPane>
+-      </pane>
+-      <pane id="Scope" />
+-    </panes>
+-  </component>
+-  <component name="PropertiesComponent">
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/train/train_siamrpn.py" />
+-  </component>
+-  <component name="RecentsManager">
+-    <key name="MoveFile.RECENT_KEYS">
+-      <recent name="$PROJECT_DIR$/train" />
+-      <recent name="$PROJECT_DIR$/util" />
+-      <recent name="$PROJECT_DIR$/tracking" />
+-    </key>
+-    <key name="CopyFile.RECENT_KEYS">
+-      <recent name="$PROJECT_DIR$/train" />
+-      <recent name="$PROJECT_DIR$/train/experiments" />
+-      <recent name="$PROJECT_DIR$/tracking" />
+-    </key>
+-  </component>
+-  <component name="RunDashboard">
+-    <option name="ruleStates">
+-      <list>
+-        <RuleState>
+-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+-        </RuleState>
+-        <RuleState>
+-          <option name="name" value="StatusDashboardGroupingRule" />
+-        </RuleState>
+-      </list>
+-    </option>
+-  </component>
+-  <component name="RunManager" selected="Python.run_tracking">
+-    <configuration name="Train RPNG RGB + RGB+IR" type="Multirun" factoryName="Multirun" separateTabs="true" startOneByOne="true" markFailedProcess="true" hideSuccessProcess="false" delayTime="1">
+-      <runConfiguration name="train RPN RGB" type="Python" />
+-      <runConfiguration name="train RPN RGB + IR" type="Python" />
+-      <method v="2" />
+-    </configuration>
+-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+-      <module name="SiamRPN-PyTorch" />
+-      <option name="INTERPRETER_OPTIONS" value="" />
+-      <option name="PARENT_ENVS" value="true" />
+-      <envs>
+-        <env name="PYTHONUNBUFFERED" value="1" />
+-        <env name="CUDA_VISIBLE_DEVICES" value="0" />
+-      </envs>
+-      <option name="SDK_HOME" value="/usr/bin/python3.5" />
+-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/train" />
+-      <option name="IS_MODULE_SDK" value="false" />
+-      <option name="ADD_CONTENT_ROOTS" value="true" />
+-      <option name="ADD_SOURCE_ROOTS" value="true" />
+-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train/train_siamrpn.py" />
+-      <option name="PARAMETERS" value="" />
+-      <option name="SHOW_COMMAND_LINE" value="false" />
+-      <option name="EMULATE_TERMINAL" value="false" />
+-      <option name="MODULE_MODE" value="false" />
+-      <option name="REDIRECT_INPUT" value="false" />
+-      <option name="INPUT_FILE" value="" />
+-      <method v="2" />
+-    </configuration>
+-    <configuration name="run_tracking" type="PythonConfigurationType" factoryName="Python">
+-      <module name="SiamRPN-PyTorch" />
+-      <option name="INTERPRETER_OPTIONS" value="" />
+-      <option name="PARENT_ENVS" value="true" />
+-      <envs>
+-        <env name="PYTHONUNBUFFERED" value="1" />
+-        <env name="CUDA_VISIBLE_DEVICES" value="0" />
+-      </envs>
+-      <option name="SDK_HOME" value="/usr/bin/python3.5" />
+-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+-      <option name="IS_MODULE_SDK" value="false" />
+-      <option name="ADD_CONTENT_ROOTS" value="true" />
+-      <option name="ADD_SOURCE_ROOTS" value="true" />
+-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tracking/run_tracking.py" />
+-      <option name="PARAMETERS" value="" />
+-      <option name="SHOW_COMMAND_LINE" value="false" />
+-      <option name="EMULATE_TERMINAL" value="false" />
+-      <option name="MODULE_MODE" value="false" />
+-      <option name="REDIRECT_INPUT" value="false" />
+-      <option name="INPUT_FILE" value="" />
+-      <method v="2" />
+-    </configuration>
+-    <configuration name="train RPN RGB + IR" type="PythonConfigurationType" factoryName="Python">
+-      <module name="SiamRPN-PyTorch" />
+-      <option name="INTERPRETER_OPTIONS" value="" />
+-      <option name="PARENT_ENVS" value="true" />
+-      <envs>
+-        <env name="PYTHONUNBUFFERED" value="1" />
+-        <env name="CUDA_VISIBLE_DEVICES" value="1" />
+-      </envs>
+-      <option name="SDK_HOME" value="/usr/bin/python3.5" />
+-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/train" />
+-      <option name="IS_MODULE_SDK" value="false" />
+-      <option name="ADD_CONTENT_ROOTS" value="true" />
+-      <option name="ADD_SOURCE_ROOTS" value="true" />
+-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train/train.py" />
+-      <option name="PARAMETERS" value="--modality 2 --experiment_name SiamRPN_RGBIR --model SiamRPN" />
+-      <option name="SHOW_COMMAND_LINE" value="false" />
+-      <option name="EMULATE_TERMINAL" value="false" />
+-      <option name="MODULE_MODE" value="false" />
+-      <option name="REDIRECT_INPUT" value="false" />
+-      <option name="INPUT_FILE" value="" />
+-      <method v="2" />
+-    </configuration>
+-    <configuration name="train RPN RGB" type="PythonConfigurationType" factoryName="Python">
+-      <module name="SiamRPN-PyTorch" />
+-      <option name="INTERPRETER_OPTIONS" value="" />
+-      <option name="PARENT_ENVS" value="true" />
+-      <envs>
+-        <env name="PYTHONUNBUFFERED" value="1" />
+-        <env name="CUDA_VISIBLE_DEVICES" value="0" />
+-      </envs>
+-      <option name="SDK_HOME" value="/usr/bin/python3.5" />
+-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/train" />
+-      <option name="IS_MODULE_SDK" value="false" />
+-      <option name="ADD_CONTENT_ROOTS" value="true" />
+-      <option name="ADD_SOURCE_ROOTS" value="true" />
+-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train/train.py" />
+-      <option name="PARAMETERS" value="--modality 1 --experiment_name SiamRPN_RGB --model SiamRPN" />
+-      <option name="SHOW_COMMAND_LINE" value="false" />
+-      <option name="EMULATE_TERMINAL" value="false" />
+-      <option name="MODULE_MODE" value="false" />
+-      <option name="REDIRECT_INPUT" value="false" />
+-      <option name="INPUT_FILE" value="" />
+-      <method v="2" />
+-    </configuration>
+-    <list>
+-      <item itemvalue="Multirun.Train RPNG RGB + RGB+IR" />
+-      <item itemvalue="Python.train RPN RGB" />
+-      <item itemvalue="Python.train RPN RGB + IR" />
+-      <item itemvalue="Python.run_tracking" />
+-    </list>
+-  </component>
+-  <component name="SvnConfiguration">
+-    <configuration />
+-  </component>
+-  <component name="TaskManager">
+-    <task active="true" id="Default" summary="Default task">
+-      <changelist id="3c26d431-2fbc-4e13-8f9b-affc3b8083c3" name="Default Changelist" comment="" />
+-      <created>1572949136845</created>
+-      <option name="number" value="Default" />
+-      <option name="presentableId" value="Default" />
+-      <updated>1572949136845</updated>
+-    </task>
+-    <servers />
+-  </component>
+-  <component name="TodoView">
+-    <todo-panel id="selected-file">
+-      <is-autoscroll-to-source value="true" />
+-    </todo-panel>
+-    <todo-panel id="all">
+-      <are-packages-shown value="true" />
+-      <is-autoscroll-to-source value="true" />
+-    </todo-panel>
+-  </component>
+-  <component name="ToolWindowManager">
+-    <frame x="1983" y="286" width="1857" height="1202" extended-state="6" />
+-    <editor active="true" />
+-    <layout>
+-      <window_info id="Favorites" side_tool="true" />
+-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18266085" />
+-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+-      <window_info anchor="bottom" id="Version Control" />
+-      <window_info anchor="bottom" id="Python Console" />
+-      <window_info anchor="bottom" id="Terminal" weight="0.32991612" />
+-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+-      <window_info anchor="bottom" id="Message" order="0" />
+-      <window_info anchor="bottom" id="Find" order="1" />
+-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.38676608" />
+-      <window_info anchor="bottom" id="Debug" order="3" weight="0.38210624" />
+-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32991612" />
+-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+-    </layout>
+-  </component>
+-  <component name="XDebuggerManager">
+-    <breakpoint-manager>
+-      <breakpoints>
+-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+-          <url>file://$PROJECT_DIR$/train/data.py</url>
+-          <line>443</line>
+-          <option name="timeStamp" value="2" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+-          <url>file://$PROJECT_DIR$/train/network.py</url>
+-          <option name="timeStamp" value="16" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+-          <url>file://$PROJECT_DIR$/train/net.py</url>
+-          <line>182</line>
+-          <option name="timeStamp" value="29" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+-          <url>file://$PROJECT_DIR$/train/data_rgbt.py</url>
+-          <line>434</line>
+-          <option name="timeStamp" value="30" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+-          <url>file://$PROJECT_DIR$/tracking/SiamRPNEval.py</url>
+-          <line>308</line>
+-          <option name="timeStamp" value="33" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+-          <url>file://$PROJECT_DIR$/tracking/SiamRPNEval.py</url>
+-          <line>245</line>
+-          <option name="timeStamp" value="37" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+-          <url>file://$PROJECT_DIR$/tracking/SiamRPNEval.py</url>
+-          <line>148</line>
+-          <option name="timeStamp" value="41" />
+-        </line-breakpoint>
+-      </breakpoints>
+-    </breakpoint-manager>
+-  </component>
+-  <component name="editorHistoryManager">
+-    <entry file="file://$PROJECT_DIR$/../.local/lib/python3.5/site-packages/got10k/datasets/vid.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="170">
+-          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/../.local/lib/python3.5/site-packages/got10k/datasets/got10k.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="619">
+-          <caret line="63" column="38" lean-forward="true" selection-start-line="63" selection-start-column="38" selection-end-line="63" selection-end-column="38" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/tracking/rgbtdataset.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="732">
+-          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+-          <folding>
+-            <element signature="e#0#48#0" expanded="true" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/../.local/lib/python3.5/site-packages/torch/utils/data/_utils/fetch.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="477">
+-          <caret line="43" selection-start-line="43" selection-end-line="43" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/network.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="187">
+-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+-          <folding>
+-            <element signature="e#0#12#0" expanded="true" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/../.local/lib/python3.5/site-packages/got10k/experiments/got10k.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="391">
+-          <caret line="80" column="45" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/rgbtdataset.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="2329">
+-          <caret line="137" lean-forward="true" selection-start-line="137" selection-end-line="137" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/experiments/SiamRPN/parameters.json">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="170">
+-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/tracking/util.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="266">
+-          <caret line="111" column="34" selection-start-line="111" selection-start-column="34" selection-end-line="111" selection-end-column="34" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/experiments/SiamRPN/train_val_plot.png">
+-      <provider selected="true" editor-type-id="images" />
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/../.local/lib/python3.5/site-packages/torch/_utils.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="543">
+-          <caret line="384" selection-start-line="384" selection-end-line="384" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/experiments/SiamRPN_RGBIR/train_val_plot.png">
+-      <provider selected="true" editor-type-id="images" />
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/experiments/SiamRPN_RGB/train_val_plot.png">
+-      <provider selected="true" editor-type-id="images" />
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/train_siamfc.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="425">
+-          <caret line="231" column="25" selection-start-line="214" selection-start-column="16" selection-end-line="231" selection-end-column="25" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/network_siamfc.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="463">
+-          <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+-          <folding>
+-            <element signature="e#1#22#0" expanded="true" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/data.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="493">
+-          <caret line="133" column="55" selection-start-line="133" selection-start-column="55" selection-end-line="133" selection-end-column="55" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/../.local/lib/python3.5/site-packages/got10k/trackers/__init__.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="425">
+-          <caret line="37" column="47" lean-forward="true" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
+-          <folding>
+-            <element signature="e#0#38#0" expanded="true" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/tracking/data_loader.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="170">
+-          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+-          <folding>
+-            <element signature="e#25#34#0" expanded="true" />
+-            <element signature="e#7420#7932#0" />
+-            <element signature="e#8036#9294#0" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/tracking/reports/RGBT/RGBT-Train/SiamRPN/success_plot.png">
+-      <provider selected="true" editor-type-id="images" />
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/experimentrgbt.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="780">
+-          <caret line="101" column="28" selection-start-line="101" selection-start-column="28" selection-end-line="101" selection-end-column="28" />
+-          <folding>
+-            <element signature="e#0#64#0" expanded="true" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/fixed.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="238">
+-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+-          <folding>
+-            <element signature="e#0#9#0" expanded="true" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/tracking/custom_transforms.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="119">
+-          <caret line="133" lean-forward="true" selection-end-line="167" />
+-          <folding>
+-            <element signature="e#0#12#0" expanded="true" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/custom_transforms.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="424">
+-          <caret line="162" column="46" lean-forward="true" selection-start-line="162" selection-start-column="46" selection-end-line="162" selection-end-column="46" />
+-          <folding>
+-            <element signature="e#0#12#0" expanded="true" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/img/corners.png">
+-      <provider selected="true" editor-type-id="images" />
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/img/100.png">
+-      <provider selected="true" editor-type-id="images" />
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/tracking/config.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="357">
+-          <caret line="21" column="19" lean-forward="true" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/config.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="153">
+-          <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/util/__init__.py">
+-      <provider selected="true" editor-type-id="text-editor" />
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/tracking/experiments/default/parameters.json">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="153">
+-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/tracking/reports/RGBT/RGB/SiamRPN/success_plot.png">
+-      <provider selected="true" editor-type-id="images" />
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/tracking/reports/RGBT/RGBIR/SiamRPN/success_plot.png">
+-      <provider selected="true" editor-type-id="images" />
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/README.md">
+-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+-        <state split_layout="SPLIT">
+-          <first_editor />
+-          <second_editor />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/tracking/network.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="68">
+-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/../.local/lib/python3.5/site-packages/torch/serialization.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="57">
+-          <caret line="409" column="42" lean-forward="true" selection-start-line="409" selection-start-column="42" selection-end-line="409" selection-end-column="42" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/util.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="85">
+-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+-          <folding>
+-            <element signature="e#0#31#0" expanded="true" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/data_rgbt.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="34">
+-          <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/__init__.py">
+-      <provider selected="true" editor-type-id="text-editor" />
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/tracking/SiamRPNEval.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="102">
+-          <caret line="125" column="18" lean-forward="true" selection-start-line="125" selection-start-column="18" selection-end-line="125" selection-end-column="18" />
+-          <folding>
+-            <element signature="e#0#10#0" expanded="true" />
+-            <element signature="e#818#3658#0" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/test.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="119">
+-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+-          <folding>
+-            <element signature="e#0#9#0" expanded="true" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/tracking/run_tracking.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="238">
+-          <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+-          <folding>
+-            <element signature="e#0#38#0" expanded="true" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/net.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="-499">
+-          <caret line="186" column="25" lean-forward="true" selection-start-line="186" selection-start-column="25" selection-end-line="186" selection-end-column="25" />
+-          <folding>
+-            <element signature="e#0#9#0" expanded="true" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/train/train.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="340">
+-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+-        </state>
+-      </provider>
+-    </entry>
+-  </component>
+-</project>
+\ No newline at end of file
+diff --git a/tracking/reports/RGBT/RGB/SiamRPN/performance.json b/tracking/reports/RGBT/RGB/SiamRPN/performance.json
+deleted file mode 100644
+index 33d3dfd..0000000
+--- a/tracking/reports/RGBT/RGB/SiamRPN/performance.json
++++ /dev/null
+@@ -1,234 +0,0 @@
+-{
+-    "SiamRPN": {
+-        "overall": {
+-            "sr": 0.01958955223880597,
+-            "ao": 0.048770194175930086,
+-            "succ_curve": [
+-                0.1919776119402985,
+-                0.18973880597014925,
+-                0.18861940298507462,
+-                0.1876865671641791,
+-                0.1869402985074627,
+-                0.18507462686567164,
+-                0.18227611940298508,
+-                0.18134328358208956,
+-                0.1796641791044776,
+-                0.1761194029850746,
+-                0.17201492537313434,
+-                0.16529850746268657,
+-                0.1537313432835821,
+-                0.1457089552238806,
+-                0.13526119402985073,
+-                0.12705223880597014,
+-                0.12126865671641791,
+-                0.11492537313432835,
+-                0.11156716417910448,
+-                0.10634328358208955,
+-                0.10205223880597016,
+-                0.0958955223880597,
+-                0.08973880597014926,
+-                0.08432835820895522,
+-                0.07854477611940298,
+-                0.07350746268656716,
+-                0.06828358208955224,
+-                0.06548507462686567,
+-                0.0625,
+-                0.05988805970149254,
+-                0.057276119402985076,
+-                0.054850746268656714,
+-                0.04682835820895522,
+-                0.03955223880597015,
+-                0.038432835820895524,
+-                0.03675373134328358,
+-                0.03470149253731343,
+-                0.032276119402985075,
+-                0.030410447761194028,
+-                0.029477611940298507,
+-                0.028171641791044776,
+-                0.027238805970149254,
+-                0.026492537313432835,
+-                0.025,
+-                0.024440298507462686,
+-                0.023507462686567164,
+-                0.022014925373134327,
+-                0.022014925373134327,
+-                0.020895522388059702,
+-                0.020522388059701493,
+-                0.01958955223880597,
+-                0.019029850746268655,
+-                0.01753731343283582,
+-                0.016791044776119403,
+-                0.01585820895522388,
+-                0.015671641791044775,
+-                0.014552238805970149,
+-                0.013992537313432836,
+-                0.013619402985074627,
+-                0.013246268656716418,
+-                0.012686567164179104,
+-                0.011940298507462687,
+-                0.011194029850746268,
+-                0.011007462686567163,
+-                0.010261194029850746,
+-                0.010074626865671642,
+-                0.009328358208955223,
+-                0.008955223880597015,
+-                0.00876865671641791,
+-                0.008582089552238806,
+-                0.008208955223880597,
+-                0.007649253731343284,
+-                0.006902985074626866,
+-                0.006343283582089552,
+-                0.005597014925373134,
+-                0.00541044776119403,
+-                0.005037313432835821,
+-                0.004850746268656716,
+-                0.0046641791044776115,
+-                0.004291044776119403,
+-                0.004291044776119403,
+-                0.003917910447761194,
+-                0.0033582089552238806,
+-                0.003171641791044776,
+-                0.0029850746268656717,
+-                0.002425373134328358,
+-                0.002425373134328358,
+-                0.002052238805970149,
+-                0.0016791044776119403,
+-                0.0014925373134328358,
+-                0.0009328358208955224,
+-                0.0009328358208955224,
+-                0.0005597014925373135,
+-                0.00037313432835820896,
+-                0.00037313432835820896,
+-                0.00018656716417910448,
+-                0.0,
+-                0.0,
+-                0.0,
+-                0.0,
+-                0.0
+-            ],
+-            "speed_fps": 133.55969876412283
+-        },
+-        "seq_wise": {
+-            "baketballwaliking": {
+-                "sr": 0.0,
+-                "ao": 3.3301760785197805e-05,
+-                "length": 221,
+-                "speed_fps": 121.98582364055905
+-            },
+-            "baginhand": {
+-                "sr": 0.010752688172043012,
+-                "ao": 0.018712495320244917,
+-                "length": 279,
+-                "speed_fps": 136.16341819875353
+-            },
+-            "boundaryandfast": {
+-                "sr": 0.010582010582010581,
+-                "ao": 0.006605977263030704,
+-                "length": 189,
+-                "speed_fps": 124.30949569212218
+-            },
+-            "call": {
+-                "sr": 0.0,
+-                "ao": 0.0009349985200550234,
+-                "length": 218,
+-                "speed_fps": 160.78330867749378
+-            },
+-            "blackwoman": {
+-                "sr": 0.006036217303822937,
+-                "ao": 0.00799718626878632,
+-                "length": 497,
+-                "speed_fps": 139.00952909640594
+-            },
+-            "blueCar": {
+-                "sr": 0.07718120805369127,
+-                "ao": 0.260403513581411,
+-                "length": 298,
+-                "speed_fps": 121.1307043914029
+-            },
+-            "bicyclecity": {
+-                "sr": 0.10676156583629894,
+-                "ao": 0.09809577743610985,
+-                "length": 281,
+-                "speed_fps": 149.01056774951758
+-            },
+-            "baby": {
+-                "sr": 0.010638297872340425,
+-                "ao": 0.010915049168269783,
+-                "length": 658,
+-                "speed_fps": 134.60042630234733
+-            },
+-            "bluebike": {
+-                "sr": 0.019230769230769232,
+-                "ao": 0.10125477529772878,
+-                "length": 260,
+-                "speed_fps": 150.93935626513257
+-            },
+-            "bikeman": {
+-                "sr": 0.005681818181818182,
+-                "ao": 0.00512305912801798,
+-                "length": 176,
+-                "speed_fps": 159.10948679488
+-            },
+-            "biketwo": {
+-                "sr": 0.0030120481927710845,
+-                "ao": 0.002448588515680715,
+-                "length": 332,
+-                "speed_fps": 138.5657532287403
+-            },
+-            "car": {
+-                "sr": 0.03864734299516908,
+-                "ao": 0.17831530066001677,
+-                "length": 414,
+-                "speed_fps": 85.78453674220448
+-            },
+-            "balancebike": {
+-                "sr": 0.004464285714285714,
+-                "ao": 0.005623284260211505,
+-                "length": 224,
+-                "speed_fps": 124.05647779638548
+-            },
+-            "afterrain": {
+-                "sr": 0.00819672131147541,
+-                "ao": 0.025280939909175733,
+-                "length": 122,
+-                "speed_fps": 137.32876961132527
+-            },
+-            "car10": {
+-                "sr": 0.009478672985781991,
+-                "ao": 0.010160258680203444,
+-                "length": 211,
+-                "speed_fps": 140.13744770713188
+-            },
+-            "aftertree": {
+-                "sr": 0.00641025641025641,
+-                "ao": 0.00938053681394314,
+-                "length": 312,
+-                "speed_fps": 159.65051400635716
+-            },
+-            "bikemove1": {
+-                "sr": 0.005747126436781609,
+-                "ao": 0.018909315409038473,
+-                "length": 174,
+-                "speed_fps": 129.0227056416385
+-            },
+-            "bus6": {
+-                "sr": 0.022727272727272728,
+-                "ao": 0.18832016739363527,
+-                "length": 88,
+-                "speed_fps": 111.52269979765721
+-            },
+-            "bike": {
+-                "sr": 0.012048192771084338,
+-                "ao": 0.01956022907283536,
+-                "length": 332,
+-                "speed_fps": 125.58296291829674
+-            },
+-            "basketball2": {
+-                "sr": 0.013513513513513514,
+-                "ao": 0.010428123854532612,
+-                "length": 74,
+-                "speed_fps": 136.51583169559484
+-            }
+-        }
+-    }
+-}
+\ No newline at end of file
+diff --git a/tracking/reports/RGBT/RGB/SiamRPN/success_plot.png b/tracking/reports/RGBT/RGB/SiamRPN/success_plot.png
+deleted file mode 100644
+index 97a7a36..0000000
+Binary files a/tracking/reports/RGBT/RGB/SiamRPN/success_plot.png and /dev/null differ
+diff --git a/tracking/reports/RGBT/RGBIR/SiamRPN/performance.json b/tracking/reports/RGBT/RGBIR/SiamRPN/performance.json
+deleted file mode 100644
+index 41c291d..0000000
+--- a/tracking/reports/RGBT/RGBIR/SiamRPN/performance.json
++++ /dev/null
+@@ -1,234 +0,0 @@
+-{
+-    "SiamRPN": {
+-        "overall": {
+-            "sr": 0.025559701492537314,
+-            "succ_curve": [
+-                0.26063432835820893,
+-                0.2550373134328358,
+-                0.2503731343283582,
+-                0.2468283582089552,
+-                0.2421641791044776,
+-                0.23955223880597015,
+-                0.23227611940298507,
+-                0.2292910447761194,
+-                0.22611940298507463,
+-                0.21958955223880597,
+-                0.2162313432835821,
+-                0.21100746268656717,
+-                0.20205223880597015,
+-                0.18899253731343282,
+-                0.17779850746268658,
+-                0.16884328358208955,
+-                0.15746268656716417,
+-                0.14533582089552238,
+-                0.13899253731343283,
+-                0.1337686567164179,
+-                0.128544776119403,
+-                0.1248134328358209,
+-                0.12126865671641791,
+-                0.11753731343283583,
+-                0.11156716417910448,
+-                0.10597014925373134,
+-                0.10223880597014925,
+-                0.09720149253731343,
+-                0.09421641791044776,
+-                0.08973880597014926,
+-                0.08432835820895522,
+-                0.08078358208955223,
+-                0.07686567164179105,
+-                0.07276119402985075,
+-                0.06921641791044776,
+-                0.0664179104477612,
+-                0.06417910447761194,
+-                0.06175373134328358,
+-                0.05914179104477612,
+-                0.05559701492537313,
+-                0.05298507462686567,
+-                0.04869402985074627,
+-                0.045895522388059704,
+-                0.04123134328358209,
+-                0.03787313432835821,
+-                0.03544776119402985,
+-                0.03264925373134328,
+-                0.030783582089552237,
+-                0.028358208955223882,
+-                0.027425373134328357,
+-                0.025559701492537314,
+-                0.022388059701492536,
+-                0.019776119402985074,
+-                0.018470149253731343,
+-                0.017350746268656715,
+-                0.01585820895522388,
+-                0.013992537313432836,
+-                0.0125,
+-                0.011380597014925373,
+-                0.010261194029850746,
+-                0.009888059701492537,
+-                0.009514925373134328,
+-                0.008395522388059701,
+-                0.007462686567164179,
+-                0.006716417910447761,
+-                0.006343283582089552,
+-                0.006156716417910448,
+-                0.005783582089552239,
+-                0.005597014925373134,
+-                0.005037313432835821,
+-                0.0046641791044776115,
+-                0.004291044776119403,
+-                0.004291044776119403,
+-                0.004291044776119403,
+-                0.003917910447761194,
+-                0.0035447761194029852,
+-                0.0033582089552238806,
+-                0.003171641791044776,
+-                0.002798507462686567,
+-                0.0026119402985074628,
+-                0.002238805970149254,
+-                0.002052238805970149,
+-                0.0014925373134328358,
+-                0.001119402985074627,
+-                0.0007462686567164179,
+-                0.0007462686567164179,
+-                0.0005597014925373135,
+-                0.00018656716417910448,
+-                0.00018656716417910448,
+-                0.0,
+-                0.0,
+-                0.0,
+-                0.0,
+-                0.0,
+-                0.0,
+-                0.0,
+-                0.0,
+-                0.0,
+-                0.0,
+-                0.0,
+-                0.0
+-            ],
+-            "speed_fps": 91.75495727356416,
+-            "ao": 0.06465217125320605
+-        },
+-        "seq_wise": {
+-            "car10": {
+-                "sr": 0.004739336492890996,
+-                "length": 211,
+-                "speed_fps": 96.93973547390449,
+-                "ao": 0.003123335132834323
+-            },
+-            "aftertree": {
+-                "sr": 0.003205128205128205,
+-                "length": 312,
+-                "speed_fps": 104.87217809142204,
+-                "ao": 0.007012639102452998
+-            },
+-            "afterrain": {
+-                "sr": 0.02459016393442623,
+-                "length": 122,
+-                "speed_fps": 100.58436250559514,
+-                "ao": 0.024011191204833977
+-            },
+-            "bluebike": {
+-                "sr": 0.007692307692307693,
+-                "length": 260,
+-                "speed_fps": 90.132903431351,
+-                "ao": 0.16905452502606488
+-            },
+-            "blackwoman": {
+-                "sr": 0.03822937625754527,
+-                "length": 497,
+-                "speed_fps": 97.115874148166,
+-                "ao": 0.10763721944526788
+-            },
+-            "bike": {
+-                "sr": 0.009036144578313253,
+-                "length": 332,
+-                "speed_fps": 83.627972109946,
+-                "ao": 0.010222846486236826
+-            },
+-            "call": {
+-                "sr": 0.0,
+-                "length": 218,
+-                "speed_fps": 92.59350139816424,
+-                "ao": 0.0
+-            },
+-            "bikeman": {
+-                "sr": 0.03409090909090909,
+-                "length": 176,
+-                "speed_fps": 107.98090388949628,
+-                "ao": 0.10363194246028212
+-            },
+-            "balancebike": {
+-                "sr": 0.03571428571428571,
+-                "length": 224,
+-                "speed_fps": 105.48465787357767,
+-                "ao": 0.03851209368400106
+-            },
+-            "blueCar": {
+-                "sr": 0.003355704697986577,
+-                "length": 298,
+-                "speed_fps": 87.80351733895603,
+-                "ao": 0.04202384783350956
+-            },
+-            "biketwo": {
+-                "sr": 0.0030120481927710845,
+-                "length": 332,
+-                "speed_fps": 92.16837024963189,
+-                "ao": 0.002444776588848853
+-            },
+-            "bicyclecity": {
+-                "sr": 0.010676156583629894,
+-                "length": 281,
+-                "speed_fps": 94.64476313532407,
+-                "ao": 0.012321453749753615
+-            },
+-            "baketballwaliking": {
+-                "sr": 0.07692307692307693,
+-                "length": 221,
+-                "speed_fps": 95.46668556471651,
+-                "ao": 0.08281743312521313
+-            },
+-            "basketball2": {
+-                "sr": 0.0,
+-                "length": 74,
+-                "speed_fps": 102.57156071904417,
+-                "ao": 0.0011812711476109497
+-            },
+-            "baby": {
+-                "sr": 0.05167173252279635,
+-                "length": 658,
+-                "speed_fps": 91.30883383761493,
+-                "ao": 0.04544145106014824
+-            },
+-            "baginhand": {
+-                "sr": 0.010752688172043012,
+-                "length": 279,
+-                "speed_fps": 93.96212347308288,
+-                "ao": 0.014246334062602577
+-            },
+-            "boundaryandfast": {
+-                "sr": 0.0,
+-                "length": 189,
+-                "speed_fps": 86.69449755858047,
+-                "ao": 0.0028724551786150393
+-            },
+-            "bikemove1": {
+-                "sr": 0.040229885057471264,
+-                "length": 174,
+-                "speed_fps": 92.43641916013851,
+-                "ao": 0.052497745613455764
+-            },
+-            "bus6": {
+-                "sr": 0.022727272727272728,
+-                "length": 88,
+-                "speed_fps": 71.53418829553381,
+-                "ao": 0.17195632197148572
+-            },
+-            "car": {
+-                "sr": 0.06280193236714976,
+-                "length": 414,
+-                "speed_fps": 65.09403633852668,
+-                "ao": 0.28786832643303395
+-            }
+-        }
+-    }
+-}
+\ No newline at end of file
+diff --git a/tracking/reports/RGBT/RGBIR/SiamRPN/success_plot.png b/tracking/reports/RGBT/RGBIR/SiamRPN/success_plot.png
+deleted file mode 100644
+index c427891..0000000
+Binary files a/tracking/reports/RGBT/RGBIR/SiamRPN/success_plot.png and /dev/null differ
+diff --git a/tracking/run_tracking.py b/tracking/run_tracking.py
+index 45675ce..fc5bb7f 100644
+--- a/tracking/run_tracking.py
++++ b/tracking/run_tracking.py
+@@ -10,11 +10,13 @@ if __name__ == '__main__':
+     modality = 1
+ 
+     if modality == 1:
+-        net_path = 'train/experiments/SiamRPN_RGB/model/model_e4.pth'
+-        experiment_name = 'RGB'
++        # net_path = 'experiments/SiamRPN_RGB/model/model_e1.pth'
++        net_path = 'experiments/SiamRPN_RGB/model/model_e78.pth'
++        experiment_name = 'RGB_78'
+     else:
+-        net_path = 'train/experiments/SiamRPN_RGBIR/model/model_e1.pth'
+-        experiment_name = 'RGBIR'
++        net_path = 'train/experiments/SiamRPN_RGBIR/model/model_e78.pth'
++        # net_path = 'train/experiments/SiamRPN_RGBIR/model/model_e1.pth'
++        experiment_name = 'RGBIR_78'
+ 
+ 
+     tracker = TrackerSiamRPNEval(modality=modality,
+@@ -22,7 +24,7 @@ if __name__ == '__main__':
+ 
+     experiments = ExperimentRGBT('/home/zuern/datasets/thermal_tracking/RGB-T234/',
+                        experiment_name=experiment_name,
+-                       subset='val')
++                       subset='train_small')
+ 
+     '''run experiments'''
+     experiments.run(tracker, visualize=False)
+diff --git a/train/data.py b/train/data.py
+index 7106f06..9273000 100644
+--- a/train/data.py
++++ b/train/data.py
+@@ -50,13 +50,11 @@ class TrainDataLoader(Dataset):
+                 self.max_inter = video_num//2
+ 
+             template_index = np.clip(random.choice(range(0, max(1, video_num - self.max_inter))), 0, video_num-1)
+-
+             detection_index= np.clip(random.choice(range(1, max(2, self.max_inter))) + template_index, 0, video_num-1)
+ 
+             template_img_path, detection_img_path  = video_name[template_index], video_name[detection_index]
+ 
+             template_gt  = video_gt[template_index]
+-
+             detection_gt = video_gt[detection_index]
+ 
+             if template_gt[2]*template_gt[3]*detection_gt[2]*detection_gt[3] != 0:
+@@ -105,15 +103,9 @@ class TrainDataLoader(Dataset):
+                                                                         config.template_img_size,
+                                                                         config.context, img_mean )
+ 
+-        size_x = config.template_img_size
+-        x1, y1 = int((size_x + 1) / 2 - w_x / 2), int((size_x + 1) / 2 - h_x / 2)
+-        x2, y2 = int((size_x + 1) / 2 + w_x / 2), int((size_x + 1) / 2 + h_x / 2)
+-
+-
+         self.ret['exemplar_img'] = exemplar_img
+ 
+         '''detection'''
+-        #detection_img = cv2.imread(self.ret['detection_img_path'])
+         d = self.ret['detection_target_xywh']
+         cx, cy, w, h = d  # float type
+ 
+@@ -142,18 +134,11 @@ class TrainDataLoader(Dataset):
+         x1, y1 = int((size_x + 1) / 2 - w_x / 2), int((size_x + 1) / 2 - h_x / 2)
+         x2, y2 = int((size_x + 1) / 2 + w_x / 2), int((size_x + 1) / 2 + h_x / 2)
+ 
+-        #frame_d = cv2.rectangle(instance_img, (int(x1+(a_x*scale_x)),int(y1+(b_y*scale_x))), (int(x2+(a_x*scale_x)),int(y2+(b_y*scale_x))), (0, 255, 0), 1)
+-        #cv2.imwrite('detection_img_ori.png',frame_d)
+ 
+         w  = x2 - x1
+         h  = y2 - y1
+-        cx = x1 + w/2
+-        cy = y1 + h/2
+-
+-        #print('[a_x_, b_y_, w, h]', [int(a_x_), int(b_y_), w, h])
+ 
+         self.ret['instance_img'] = instance_img
+-        #self.ret['cx, cy, w, h'] = [int(a_x_*0.16), int(b_y_*0.16), w, h]
+         self.ret['cx, cy, w, h'] = [int(a_x_), int(b_y_), w, h]
+ 
+     def get_exemplar_image(self, img, bbox, size_z, context_amount, img_mean=None):
+@@ -175,31 +160,20 @@ class TrainDataLoader(Dataset):
+ 
+         cx, cy, w, h = bbox  # float type
+ 
+-        #cx, cy = cx - a_x , cy - b_y
+         wc_z = w + context_amount * (w + h)
+         hc_z = h + context_amount * (w + h)
+         s_z = np.sqrt(wc_z * hc_z) # the width of the crop box
+ 
+-        scale_z = size_z / s_z
+-
+         s_x = s_z * size_x / size_z
+         instance_img, gt_w, gt_h, scale_x, scale_h, scale_w = self.crop_and_pad(img, cx, cy, w, h, a_x, b_y,  size_x, s_x, img_mean)
+         w_x = gt_w #* scale_x #w * scale_x
+         h_x = gt_h #* scale_x #h * scale_x
+ 
+-        #cx, cy = cx/ scale_w *scale_x, cy/ scale_h *scale_x
+-        #cx, cy = cx/ scale_w, cy/ scale_h
+         a_x, b_y = a_x*scale_w, b_y*scale_h
+-        x1, y1 = int((size_x + 1) / 2 - w_x / 2), int((size_x + 1) / 2 - h_x / 2)
+-        x2, y2 = int((size_x + 1) / 2 + w_x / 2), int((size_x + 1) / 2 + h_x / 2)
+-        '''frame = cv2.rectangle(instance_img, (   int(x1+(a_x*scale_x)),
+-                                                int(y1+(b_y*scale_x))),
+-                                                (int(x2+(a_x*scale_x)),
+-                                                int(y2+(b_y*scale_x))),
+-                                                (0, 255, 0), 1)'''
+-        #cv2.imwrite('1.jpg', frame)
++
+         return instance_img, a_x, b_y, w_x, h_x, scale_x
+ 
++
+     def crop_and_pad(self, img, cx, cy, gt_w, gt_h, a_x, b_y, model_sz, original_sz, img_mean=None):
+ 
+         #random = np.random.uniform(-0.15, 0.15)
+@@ -214,8 +188,6 @@ class TrainDataLoader(Dataset):
+         ymin = (cy-b_y) - ((original_sz - 1) / 2)* scale_h
+         ymax = (cy-b_y) + ((original_sz - 1) / 2)* scale_h
+ 
+-        #print('xmin, xmax, ymin, ymax', xmin, xmax, ymin, ymax)
+-
+         left   = int(self.round_up(max(0., -xmin)))
+         top    = int(self.round_up(max(0., -ymin)))
+         right  = int(self.round_up(max(0., xmax - im_w + 1)))
+@@ -231,11 +203,8 @@ class TrainDataLoader(Dataset):
+             te_im_ = np.zeros((int((r + top + bottom)), int((c + left + right)), k), np.uint8)  # 0 is better than 1 initialization
+             te_im = np.zeros((int((r + top + bottom)), int((c + left + right)), k), np.uint8)  # 0 is better than 1 initialization
+ 
+-            #cv2.imwrite('te_im1.jpg', te_im)
+             te_im[:, :, :] = img_mean
+-            #cv2.imwrite('te_im2_1.jpg', te_im)
+             te_im[top:top + r, left:left + c, :] = img
+-            #cv2.imwrite('te_im2.jpg', te_im)
+ 
+             if top:
+                 te_im[0:top, left:left + c, :] = img_mean
+@@ -248,12 +217,9 @@ class TrainDataLoader(Dataset):
+ 
+             im_patch_original = te_im[int(ymin):int(ymax + 1), int(xmin):int(xmax + 1), :]
+ 
+-            #cv2.imwrite('te_im3.jpg',   im_patch_original)
+-
+         else:
+             im_patch_original = img[int(ymin):int((ymax) + 1), int(xmin):int((xmax) + 1), :]
+ 
+-            #cv2.imwrite('te_im4.jpg', im_patch_original)
+ 
+         if not np.array_equal(model_sz, original_sz):
+ 
+@@ -279,16 +245,11 @@ class TrainDataLoader(Dataset):
+             gt_w = gt_w * scale
+             gt_h = gt_h * scale
+ 
+-            #im_patch = cv2.resize(im_patch_original_, (shape))  # zzp: use cv to get a better speed
+-            #cv2.imwrite('te_im8.jpg', im_patch)
+-
+             im_patch = cv2.resize(im_patch_original, (model_sz, model_sz))  # zzp: use cv to get a better speed
+-            #cv2.imwrite('te_im9.jpg', im_patch)
+-
+ 
+         else:
+             im_patch = im_patch_original
+-        #scale = model_sz / im_patch_original.shape[0]
++
+         return im_patch, gt_w, gt_h, scale, scale_h_, scale_w_
+ 
+ 
+@@ -311,7 +272,9 @@ class TrainDataLoader(Dataset):
+         xmax = int(self.round_up(xmax + left))
+         ymin = int(self.round_up(ymin + top))
+         ymax = int(self.round_up(ymax + top))
++
+         r, c, k = img.shape
++
+         if any([top, bottom, left, right]):
+             te_im = np.zeros((r + top + bottom, c + left + right, k), np.uint8)  # 0 is better than 1 initialization
+             te_im[top:top + r, left:left + c, :] = img
+@@ -362,9 +325,6 @@ class TrainDataLoader(Dataset):
+                 label[neg_ind] = 0'''
+ 
+ 
+-
+-        #max_index = np.argsort(iou.flatten())[-20:]
+-
+         return regression_target, label
+ 
+     def box_transform(self, anchors, gt_box):
+@@ -420,34 +380,20 @@ class TrainDataLoader(Dataset):
+         self.ret['train_z_transforms'] = self.z_transforms(self.ret['exemplar_img'])
+ 
+     def __getitem__(self, index):
+-        index = random.choice(range(len(self.sub_class_dir)))
+-        '''if len(self.sub_class_dir) > 180:
+-            index = self.index
+-            self.index += 1
+ 
+-            if self.index >= 8000:
+-                self.index = 3000
+ 
+-            index = random.choice(range(3000, 8000))
+-
+-            if index in self.index:
+-                index = random.choice(range(3000, 8000))
+-                print("index in self.index")
+-
+-            if not index in self.index:
+-                self.index.append(index)
+-            if len(self.index) >= 3000:
+-                self.index = []
+-        else:
+-            index = random.choice(range(len(self.sub_class_dir)))'''
++        index = random.choice(range(len(self.sub_class_dir)))
+ 
+         if self.name == 'GOT-10k':
+             if index == 4418 or index == 8627 or index == 8629 or index == 9057 or index == 9058:
+                 index += 3
++
+         self._pick_img_pairs(index)
+         self.open()
++
+         self._tranform()
+         regression_target, conf_target = self._target()
++
+         self.count += 1
+ 
+         return self.ret['train_z_transforms'], self.ret['train_x_transforms'], regression_target, conf_target.astype(np.int64)
+diff --git a/train/data_rgbt.py b/train/data_rgbt.py
+index dd62617..b495356 100644
+--- a/train/data_rgbt.py
++++ b/train/data_rgbt.py
+@@ -9,7 +9,7 @@ from config import config
+ from torch.utils.data import Dataset
+ import glob
+ 
+-from got10k.datasets import ImageNetVID, GOT10k
++# from got10k.datasets import ImageNetVID, GOT10k
+ 
+ class TrainDataLoaderRGBT(Dataset):
+     def __init__(self, seq_dataset, z_transforms, x_transforms, name = 'RGBT-234'):
+@@ -119,11 +119,9 @@ class TrainDataLoaderRGBT(Dataset):
+         detection_img_rgb = detection_img_rgb / 255.
+         detection_img_ir = detection_img_ir / 255.
+ 
+-
+         img_rgb_mean = np.mean(template_img_rgb, axis=(0, 1))
+         img_ir_mean = np.mean(template_img_ir, axis=(0, 1))
+ 
+-
+         exemplar_img_rgb, scale_z, s_z, w_x, h_x = self.get_exemplar_image( template_img_rgb,
+                                                                         self.ret['template_target_xywh'],
+                                                                         config.template_img_size,
+diff --git a/train/experimentrgbt.py b/train/experimentrgbt.py
+index c830904..ebf94b0 100644
+--- a/train/experimentrgbt.py
++++ b/train/experimentrgbt.py
+@@ -34,6 +34,9 @@ class RGBTSequence():
+             sequence_list = sequence_list[0:split_idx]
+         elif subset == 'train':
+             sequence_list = sequence_list[split_idx:]
++        elif subset == 'train_small':
++            sequence_list = sequence_list[split_idx:split_idx+20]
++
+ 
+         for sequence in sequence_list:
+             self.anno_files.append(sequence + '/visible.txt')
+@@ -143,23 +146,20 @@ class ExperimentRGBT(object):
+                     continue
+ 
+ 
+-
+-
+                 # tracking loop
+                 boxes, times = tracker.track(img_rgb_files, img_ir_files, anno[0, :], visualize=visualize)
+ 
+ 
+-
+-
+                 # record results
+                 self._record(record_file, boxes, times)
+ 
+ 
+ 
+     def report(self, tracker_names, return_report=False):
++
+         assert isinstance(tracker_names, (list, tuple))
+ 
+-        if self.subset == 'val':
++        if self.subset == 'val' or True:
+ 
+             # meta information is useful when evaluation
+             self.dataset.return_meta = True
+diff --git a/train/net.py b/train/net.py
+index 088e77a..3e9689b 100644
+--- a/train/net.py
++++ b/train/net.py
+@@ -47,13 +47,18 @@ class TrackerSiamRPN(Tracker):
+             self.net.eval()
+ 
+ 
+-        template_rgb, detection_rgb, template_ir, detection_ir, regression_target, conf_target = dataset
++        if self.modality == 1:
++            template_rgb, detection_rgb, regression_target, conf_target = dataset
++        else:
++            template_rgb, detection_rgb, template_ir, detection_ir, regression_target, conf_target = dataset
+ 
+         if self.cuda:
+             template_rgb, detection_rgb = template_rgb.cuda(), detection_rgb.cuda()
+-            template_ir, detection_ir = template_ir.cuda(), detection_ir.cuda()
+             regression_target, conf_target = regression_target.cuda(), conf_target.cuda()
+ 
++            if self.modality == 2:
++                template_ir, detection_ir = template_ir.cuda(), detection_ir.cuda()
++
+ 
+         if self.modality == 1:
+             pred_score, pred_regression = self.net(template_rgb, detection_rgb)
+@@ -91,6 +96,7 @@ class TrackerSiamRPN(Tracker):
+ 
+     '''save model'''
+     def save(self,model, exp_name_dir, epoch):
++
+         util.adjust_learning_rate(self.optimizer, config.gamma)
+ 
+         model_save_dir_pth = '{}/model'.format(exp_name_dir)
+@@ -99,147 +105,3 @@ class TrackerSiamRPN(Tracker):
+         net_path = os.path.join(model_save_dir_pth, 'model_e%d.pth' % (epoch + 1))
+         torch.save(model.net.state_dict(), net_path)
+ 
+-
+-#
+-# class TrackerSiamFC(Tracker):
+-#
+-#     def __init__(self, net_path=None, modality=1, **kwargs):
+-#
+-#         super(TrackerSiamFC, self).__init__('SiamFC', True)
+-#
+-#         # setup GPU device if available
+-#         self.cuda = torch.cuda.is_available()
+-#         self.device = torch.device('cuda:0' if self.cuda else 'cpu')
+-#
+-#         self.modality = modality
+-#
+-#         print('Training on device {}'.format(self.device))
+-#
+-#         '''setup GPU device if available'''
+-#         self.cuda = torch.cuda.is_available()
+-#         self.device = torch.device('cuda:0' if self.cuda else 'cpu')
+-#
+-#
+-#         # settings
+-#         self.cfg = {
+-#             # basic parameters
+-#             'out_scale': 0.001,
+-#             'exemplar_sz': 127,
+-#             'instance_sz': 255,
+-#             'context': 0.5,
+-#
+-#             # inference parameters
+-#             'scale_num': 3,
+-#             'scale_step': 1.0375,
+-#             'scale_lr': 0.59,
+-#             'scale_penalty': 0.9745,
+-#             'window_influence': 0.176,
+-#             'response_sz': 17,
+-#             'response_up': 16,
+-#             'total_stride': 8,
+-#
+-#             # train parameters
+-#             'r_pos': 16,
+-#             'r_neg': 0
+-#         }
+-#
+-#
+-#         # setup model
+-#         if self.modality == 1:
+-#             self.net = Net(
+-#                 backbone=AlexNetV3(3),
+-#                 head=SiamFC(self.cfg['out_scale']))
+-#
+-#
+-#         # load checkpoint if provided
+-#         if net_path is not None:
+-#             self.net.load_state_dict(torch.load(
+-#                 net_path, map_location=lambda storage, loc: storage))
+-#         self.net = self.net.to(self.device)
+-#
+-#
+-#         # setup criterion
+-#         from network_siamfc import BalancedLoss
+-#         self.criterion = BalancedLoss()
+-#
+-#         # setup optimizer
+-#         self.optimizer = torch.optim.SGD(
+-#             self.net.parameters(),
+-#             lr=config.lr,
+-#             momentum=config.momentum,
+-#             weight_decay=config.weight_decay)
+-#
+-#
+-#     def step(self, epoch, dataset, anchors, i = 0,  train=True):
+-#
+-#         if train:
+-#             self.net.train()
+-#         else:
+-#             self.net.eval()
+-#
+-#         template_rgb, detection_rgb, template_ir, detection_ir, test , target = dataset
+-#
+-#         # TODO: convert target???
+-#         target = self._create_labels(target)
+-#
+-#         if self.cuda:
+-#             template_rgb, detection_rgb = template_rgb.cuda(), detection_rgb.cuda()
+-#             template_ir, detection_ir = template_ir.cuda(), detection_ir.cuda()
+-#             target = target.cuda()
+-#
+-#
+-#         if self.modality == 1:
+-#             responses = self.net(template_rgb, detection_rgb)
+-#         else:
+-#             responses = self.net(template_rgb, detection_rgb, template_ir, detection_ir)
+-#
+-#
+-#         loss = self.criterion(responses, target)
+-#
+-#
+-#         if train:
+-#             self.optimizer.zero_grad()
+-#             loss.backward()
+-#             torch.nn.utils.clip_grad_norm_(self.net.parameters(), config.clip)
+-#             self.optimizer.step()
+-#
+-#         return loss
+-#
+-#
+-#     def _create_labels(self, size):
+-#
+-#         # skip if same sized labels already created
+-#         if hasattr(self, 'labels') and self.labels.size() == size:
+-#             return self.labels
+-#
+-#         def logistic_labels(x, y, r_pos, r_neg):
+-#             dist = np.abs(x) + np.abs(y)  # block distance
+-#             labels = np.where(dist <= r_pos,
+-#                               np.ones_like(x),
+-#                               np.where(dist < r_neg,
+-#                                        np.ones_like(x) * 0.5,
+-#                                        np.zeros_like(x)))
+-#             return labels
+-#
+-#         # distances along x- and y-axis
+-#         n, c, h, w = size
+-#         x = np.arange(w) - (w - 1) / 2
+-#         y = np.arange(h) - (h - 1) / 2
+-#         x, y = np.meshgrid(x, y)
+-#
+-#         # create logistic labels
+-#
+-#
+-#         r_pos = self.cfg['r_pos'] / self.cfg['total_stride']
+-#         r_neg = self.cfg['r_neg'] / self.cfg['total_stride']
+-#         labels = logistic_labels(x, y, r_pos, r_neg)
+-#
+-#         # repeat to size
+-#         labels = labels.reshape((1, 1, h, w))
+-#         labels = np.tile(labels, (n, c, 1, 1))
+-#
+-#         # convert to tensors
+-#         labels = torch.from_numpy(labels).to(self.device).float()
+-#
+-#         return labels
+-
+diff --git a/train/train.py b/train/train.py
+index 0cdb342..4fa783d 100644
+--- a/train/train.py
++++ b/train/train.py
+@@ -7,8 +7,9 @@ import numpy as np
+ from tqdm import tqdm
+ from config import config
+ from data_rgbt import TrainDataLoaderRGBT
++from data import TrainDataLoader
+ from torch.utils.data import DataLoader
+-from util import util, AverageMeter, SavePlot
++from util import util, AverageMeter
+ from got10k.datasets import ImageNetVID, GOT10k
+ from torchvision import datasets, transforms
+ from custom_transforms import Normalize, ToTensor, RandomStretch, RandomCrop, CenterCrop, RandomBlur, ColorAug
+@@ -20,17 +21,19 @@ import wandb
+ torch.manual_seed(1234) # config.seed
+ 
+ 
+-parser = argparse.ArgumentParser(description='PyTorch SiameseRPN Training')
+-parser.add_argument('--experiment_name', default='SiamRPN', metavar='DIR',help='path to weight')
++parser = argparse.ArgumentParser(description='PyTorch SiameseRPN')
++
++parser.add_argument('--experiment_name', default='SiamRPN', metavar='DIR')
+ parser.add_argument('--checkpoint_path', default=None, help='resume')
+ parser.add_argument('--modality', default=None, type=int, help='how many modalities', choices=[1, 2])
++parser.add_argument('--dataset', default=None, type=str, help='which dataset', choices=['GOT-10k', 'RGBT-234', 'VID'])
+ 
+ def main():
+ 
+     '''parameter initialization'''
+     args = parser.parse_args()
+-    exp_name_dir = util.experiment_name_dir(args.experiment_name)
+ 
++    exp_name_dir = util.experiment_name_dir(args)
+ 
+     wandb.init(project="SiameseRPN", reinit=True)
+     wandb.config.update(args)  # adds all of the arguments as config variables
+@@ -39,31 +42,6 @@ def main():
+     '''model on gpu'''
+     model = net.TrackerSiamRPN(modality=args.modality)
+ 
+-    name = 'RGBT-234'
+-
+-    assert name in ['VID', 'GOT-10k', 'All', 'RGBT-234']
+-
+-    if name == 'GOT-10k':
+-        root_dir = '/home/zuern/datasets/tracking/GOT10k'
+-        seq_dataset = GOT10k(root_dir, subset='train')
+-        seq_dataset_val = GOT10k(root_dir, subset='val')
+-
+-    elif name == 'VID':
+-        root_dir = '/home/zuern/datasets/tracking/VID/ILSVRC'
+-        seq_dataset = ImageNetVID(root_dir, subset=('train'))
+-        seq_dataset_val = ImageNetVID(root_dir, subset=('val'))
+-
+-    elif name == 'RGBT-234':
+-        seq_dataset = RGBTSequence('/home/zuern/datasets/thermal_tracking/RGB-T234/', subset='train')
+-        seq_dataset_val = RGBTSequence('/home/zuern/datasets/thermal_tracking/RGB-T234/', subset='val')
+-    else:
+-        raise ValueError('Dataset not defined')
+-
+-
+-    print('seq_dataset', len(seq_dataset))
+-    print('seq_dataset_val', len(seq_dataset_val))
+-
+-
+     train_z_transforms = transforms.Compose([
+         RandomBlur(0.3),
+         ToTensor()
+@@ -81,22 +59,94 @@ def main():
+         ToTensor()
+     ])
+ 
+-    train_data  = TrainDataLoaderRGBT(seq_dataset, train_z_transforms, train_x_transforms, name)
+-    anchors = train_data.anchors
+ 
+-    train_loader = DataLoader(  dataset    = train_data,
+-                                batch_size = config.train_batch_size,
+-                                shuffle    = True,
+-                                num_workers= config.train_num_workers,
+-                                pin_memory = True)
++    assert args.dataset in ['VID', 'GOT-10k', 'All', 'RGBT-234']
++
++    if args.dataset == 'GOT-10k':
++        root_dir = '/home/zuern/datasets/tracking/GOT10k'
++
++
++        seq_dataset = GOT10k(root_dir, subset='train')
++        seq_dataset_val = GOT10k(root_dir, subset='val')
++
++        train_data = TrainDataLoader(seq_dataset, train_z_transforms, train_x_transforms, args.dataset)
++        anchors = train_data.anchors
++
++        train_loader = DataLoader(dataset=train_data,
++                                  batch_size=config.train_batch_size,
++                                  shuffle=True,
++                                  num_workers=config.train_num_workers,
++                                  pin_memory=True)
++
++        val_data = TrainDataLoader(seq_dataset_val, val_z_transforms, val_x_transforms, args.dataset)
++
++        val_loader = DataLoader(dataset=val_data,
++                                batch_size=config.valid_batch_size,
++                                shuffle=False,
++                                num_workers=config.valid_num_workers,
++                                pin_memory=True)
+ 
+-    val_data  = TrainDataLoaderRGBT(seq_dataset_val, val_z_transforms, val_x_transforms, name)
++    elif args.dataset == 'VID':
++
++        root_dir = '/home/zuern/datasets/tracking/VID/ILSVRC2015'
++
++        seq_dataset = ImageNetVID(root_dir,
++                                  subset=('train'),
++                                  cache_dir=root_dir+'/cache')
++
++        seq_dataset_val = ImageNetVID(root_dir,
++                                      subset=('val'),
++                                      cache_dir=root_dir+'/cache')
++
++        train_data = TrainDataLoader(seq_dataset, train_z_transforms, train_x_transforms, args.dataset)
++        anchors = train_data.anchors
++
++        train_loader = DataLoader(dataset=train_data,
++                                  batch_size=config.train_batch_size,
++                                  shuffle=True,
++                                  num_workers=config.train_num_workers,
++                                  pin_memory=True)
++
++        val_data = TrainDataLoader(seq_dataset_val, val_z_transforms, val_x_transforms, args.dataset)
++
++        val_loader = DataLoader(dataset=val_data,
++                                batch_size=config.valid_batch_size,
++                                shuffle=False,
++                                num_workers=config.valid_num_workers,
++                                pin_memory=True)
++
++
++    elif args.dataset == 'RGBT-234':
++
++
++        seq_dataset = RGBTSequence('/home/zuern/datasets/thermal_tracking/RGB-T234/', subset='train')
++        seq_dataset_val = RGBTSequence('/home/zuern/datasets/thermal_tracking/RGB-T234/', subset='val')
++
++        train_data = TrainDataLoaderRGBT(seq_dataset, train_z_transforms, train_x_transforms, args.dataset)
++        anchors = train_data.anchors
++
++        train_loader = DataLoader(dataset=train_data,
++                                  batch_size=config.train_batch_size,
++                                  shuffle=True,
++                                  num_workers=config.train_num_workers,
++                                  pin_memory=True)
++
++        val_data = TrainDataLoaderRGBT(seq_dataset_val, val_z_transforms, val_x_transforms, args.dataset)
++
++        val_loader = DataLoader(dataset=val_data,
++                                batch_size=config.valid_batch_size,
++                                shuffle=False,
++                                num_workers=config.valid_num_workers,
++                                pin_memory=True)
++
++
++    else:
++        raise ValueError('Dataset not defined')
++
++
++    print('seq_dataset', len(seq_dataset))
++    print('seq_dataset_val', len(seq_dataset_val))
+ 
+-    val_loader = DataLoader(    dataset    = val_data,
+-                                batch_size = config.valid_batch_size,
+-                                shuffle    = False,
+-                                num_workers= config.valid_num_workers,
+-                                pin_memory = True)
+ 
+ 
+     '''load weights'''
+@@ -113,20 +163,17 @@ def main():
+ 
+     elif config.pretrained_model:
+         checkpoint = torch.load(config.pretrained_model)
+-        # change name and load parameters
++
+         checkpoint = {k.replace('features.features', 'featureExtract'): v for k, v in checkpoint.items()}
+         model_dict = model.net.state_dict()
+         model_dict.update(checkpoint)
+         model.net.load_state_dict(model_dict)
+ 
+ 
+-
+     train_closses, train_rlosses, train_tlosses = AverageMeter(), AverageMeter(), AverageMeter()
+     val_closses, val_rlosses, val_tlosses = AverageMeter(), AverageMeter(), AverageMeter()
+ 
+ 
+-    train_val_plot = SavePlot(exp_name_dir, 'train_val_plot')
+-
+     for epoch in range(config.epoches):
+ 
+         model.net.train()
+@@ -193,7 +240,6 @@ def main():
+ 
+ 
+         val_loss = np.mean(val_loss)
+-        train_val_plot.update(train_loss, val_loss)
+ 
+         print ('Train loss: {}, val loss: {}'.format(train_loss, val_loss))
+ 
+diff --git a/train/util.py b/train/util.py
+index 47cf688..aa396b7 100644
+--- a/train/util.py
++++ b/train/util.py
+@@ -107,12 +107,12 @@ class Util(object):
+             else:
+                 raise KeyError('error in fixing former 3 layers')
+ 
+-    def experiment_name_dir(self, experiment_name):
+-        experiment_name_dir = 'experiments/{}'.format(experiment_name)
+-        if experiment_name == 'default':
+-            print('You are using "default" experiment, my advice to you is: Copy "default" change folder name and change settings in file "parameters.json"')
+-        else:
+-            print('You are using "{}" experiment'.format(experiment_name))
++    def experiment_name_dir(self, args):
++
++
++        experiment_name_dir = 'experiments/{}_{}_{}'.format(args.experiment_name, args.dataset, args.modality)
++        print('You are using "{}" experiment'.format(experiment_name_dir))
++
+         return experiment_name_dir
+ 
+     def adjust_learning_rate(self, optimizer, decay=0.1):
