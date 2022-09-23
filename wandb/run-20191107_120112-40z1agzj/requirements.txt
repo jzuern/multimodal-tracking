@@ -67,7 +67,7 @@ pillow==6.2.0
 pip==19.2.3
 plainbox==0.25
 promise==2.2.1
-protobuf==3.10.0
+protobuf==3.18.3
 psutil==5.6.3
 ptyprocess==0.5
 pyasn1==0.1.9
