@@ -39,7 +39,7 @@ httplib2==0.9.1
 idna==2.0
 inplace-abn==1.0.8.dev0+gfdd8bd9.d20191024
 jinja2==2.8
-joblib==0.14.0
+joblib==1.2.0
 keras-applications==1.0.8
 keras-preprocessing==1.1.0
 keras==2.3.1
